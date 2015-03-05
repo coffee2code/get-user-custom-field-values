@@ -5,8 +5,8 @@ Tags: user, custom field, user meta, widget, shortcode, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.6
-Tested up to: 3.8
-Stable tag: 2.8
+Tested up to: 4.1
+Stable tag: 2.9
 
 Use a widget, shortcode, and/or template tags to easily retrieve and display custom field values for the currently logged in (or any specific) user.
 
@@ -31,7 +31,7 @@ The list of useful user custom field values that are provided by default in Word
 
 It is up to other plugins or custom code to add additional user custom fields that you may then be able to retrieve with this plugin.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/get-user-custom-field-values/) | [Plugin Directory Page](http://wordpress.org/plugins/get-user-custom-field-values/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/get-user-custom-field-values/) | [Plugin Directory Page](https://wordpress.org/plugins/get-user-custom-field-values/) | [Author Homepage](http://coffee2code.com)
 
 
 == Screenshots ==
@@ -252,6 +252,20 @@ Examples:
 
 == Changelog ==
 
+= 2.9 (2015-03-04) =
+* Update widget framework to 009
+* Update widget to 008
+* Explicitly declare widget class methods public
+* Add more unit tests
+* Reformat plugin header
+* Minor code reformatting (spacing, bracing)
+* Change documentation links to wp.org to be https
+* Minor documentation improvements and spacing changes throughout
+* Note compatibility through WP 4.1+
+* Update copyright date (2015)
+* Add plugin icon
+* Regenerate .pot
+
 = 2.8 (2014-01-17) =
 * Hide shortcode wizard by default (won't change existing setting for users)
 * Show shortcode wizard for new posts as well
@@ -351,6 +365,9 @@ Examples:
 
 
 == Upgrade Notice ==
+
+= 2.9 =
+Minor update: added more unit tests; updated widget framework to 009; noted compatibility through WP 4.1+; added plugin icon
 
 = 2.8 =
 Recommended update: added 'id' and 'class' to widget and shortcode; shortcode handling improvements; added unit tests; noted compatibility through WP 3.8+

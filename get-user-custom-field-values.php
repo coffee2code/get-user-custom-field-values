@@ -1,53 +1,53 @@
 <?php
 /**
+ * Plugin Name: Get User Custom Field Values
+ * Version:     2.9
+ * Plugin URI:  http://coffee2code.com/wp-plugins/get-user-custom-field-values/
+ * Author:      Scott Reilly
+ * Author URI:  http://coffee2code.com/
+ * Domain Path: /lang/
+ * License:     GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Description: Easily retrieve and control the display of any custom field values/meta data for the currently logged in user or any specified user.
+ *
+ * Compatible with WordPress 3.6+ through 4.1+.
+ *
+ * =>> Read the accompanying readme.txt file for instructions and documentation.
+ * =>> Also, visit the plugin's homepage for additional information and updates.
+ * =>> Or visit: https://wordpress.org/plugins/get-user-custom-field-values/
+ *
  * @package Get_User_Custom_Field_Values
- * @author Scott Reilly
- * @version 2.8
+ * @author  Scott Reilly
+ * @version 2.9
  */
-/*
-Plugin Name: Get User Custom Field Values
-Version: 2.8
-Plugin URI: http://coffee2code.com/wp-plugins/get-user-custom-field-values/
-Author: Scott Reilly
-Author URI: http://coffee2code.com/
-Domain Path: /lang/
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Description: Easily retrieve and control the display of any custom field values/meta data for the currently logged in user or any specified user.
-
-Compatible with WordPress 3.6+ through 3.8+.
-
-=>> Read the accompanying readme.txt file for instructions and documentation.
-=>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/plugins/get-user-custom-field-values/
-
-TODO
-	* Create hooks to allow disabling shortcode, shortcode builder, and widget support
-	* Create method to handle args passing (or adapt existing functions to prefer it and deprecate older arguments)
-	* Support getting random custom field values
-	* Support specifying a limit on the number of custom field values returned
-	* Facilitate conditional output, maybe via c2c_get_user_custom_if() where text is only output if post
-	  has the custom field AND it equals a specified value (or one of an array of possible values)
-	  echo c2c_get_user_custom_if( 'size', array( 'XL', 'XXL' ), 'Sorry, this size is out of stock.' );
-	* Introduce a 'format' shortcode attribute and template tag argument.  Defines the output format for each
-	  matching custom field, i.e. c2c_get_user_custom(..., $format = 'Size %key% has %value%' in stock.')
-	* Support specifying $field as array or comma-separated list of custom fields.
-	* Create args array alternative template tag: c2c_user_custom_field( $field, $args = array() ) so features
-	  can be added and multiple arguments don't have to be explicitly provided.  Perhaps transition c2c_get_user_custom()
-	  in plugin v3.0 and detect args.
-	  function c2c_get_user_custom( $field, $args = array() ) {
-	    if ( ! empty( $args ) && ! is_array( $args ) ) // Old style usage
-	      return c2c_old_get_user_custom( $field, ... ); // Or: $args = c2c_get_user_custom_args_into_array( ... );
-	    // Do new handling here.
-	  }
-	* Support name filters to run against found custom fields
-	  c2c_get_user_custom( 'favorite_site', array( 'filters' => array( 'strtoupper', 'make_clickable' ) ) )
-	* Since it's shifting to args array, might as well support 'echo'
-
-*/
 
 /*
-	Copyright (c) 2006-2014 by Scott Reilly (aka coffee2code)
+ * TODO
+ * - Create hooks to allow disabling shortcode, shortcode builder, and widget support
+ * - Create method to handle args passing (or adapt existing functions to prefer it and deprecate older arguments)
+ * - Support getting random custom field values
+ * - Support specifying a limit on the number of custom field values returned
+ * - Facilitate conditional output, maybe via c2c_get_user_custom_if() where text is only output if post
+ * - has the custom field AND it equals a specified value (or one of an array of possible values)
+ * - echo c2c_get_user_custom_if( 'size', array( 'XL', 'XXL' ), 'Sorry, this size is out of stock.' );
+ * - Introduce a 'format' shortcode attribute and template tag argument.  Defines the output format for each
+ * - matching custom field, i.e. c2c_get_user_custom(..., $format = 'Size %key% has %value%' in stock.')
+ * - Support specifying $field as array or comma-separated list of custom fields.
+ * - Create args array alternative template tag: c2c_user_custom_field( $field, $args = array() ) so features
+ * - can be added and multiple arguments don't have to be explicitly provided.  Perhaps transition c2c_get_user_custom()
+ * - in plugin v3.0 and detect args.
+ * - function c2c_get_user_custom( $field, $args = array() ) {
+ *     if ( ! empty( $args ) && ! is_array( $args ) ) // Old style usage
+ *       return c2c_old_get_user_custom( $field, ... ); // Or: $args = c2c_get_user_custom_args_into_array( ... );
+ *     // Do new handling here.
+ *   }
+ * - Support name filters to run against found custom fields
+ * - c2c_get_user_custom( 'favorite_site', array( 'filters' => array( 'strtoupper', 'make_clickable' ) ) )
+ * - Since it's shifting to args array, might as well support 'echo'
+ */
+
+/*
+	Copyright (c) 2006-2015 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -75,16 +75,18 @@ if ( ! function_exists( 'c2c_get_current_user_custom' ) ):
  *
  * If the current visitor is NOT logged in, then the $none value is returned.
  *
- * @param string $field The name/key value of the custom field
- * @param string $before (optional) Text to appear before all the custom field value(s) if a value exists. Default is ''.
- * @param string $after (optional) Text to appear after all the custom field value if a value(s) exists. Default is ''.
- * @param string $none (optional) 	The text to display in place of the field value should no field value exists; if defined
- *               as '' and no field value exists, then nothing (including no $before and $after) gets displayed.  Default is ''.
- * @param string $between (optional) 	The text to display between multiple occurrences of the custom field; if defined as '',
- *               then only the first instance will be used.  Default is ''.
- * @param string $before_last (optional) The text to display between the next-to-last and last items listed when multiple occurrences of
- *               the custom field exist; $between MUST be set to something other than '' for this to take effect.  Default is ''.
- * @return string The value for the specified custom field
+ * @param string  $field       The name/key value of the custom field.
+ * @param string  $before      Optional. Text to appear before all the custom field value(s) if a value exists. Default ''.
+ * @param string  $after       Optional. Text to appear after all the custom field value if a value(s) exists. Default ''.
+ * @param string  $none        Optional. The text to display in place of the field value should no field value exists; if
+ *                             defined as '' and no field value exists, then nothing (including no $before and $after) gets
+ *                             displayed.  Default ''.
+ * @param string  $between     Optional. The text to display between multiple occurrences of the custom field; if defined as '',
+ *                             then only the first instance will be used.  Default ''.
+ * @param string  $before_last Optional. The text to display between the next-to-last and last items listed when multiple
+ *                             occurrences of the custom field exist; $between MUST be set to something other than '' for this
+ *                             to take effect.  Default ''.
+ * @return string The value for the specified custom field.
  */
 function c2c_get_current_user_custom( $field, $before='', $after='', $none='', $between='', $before_last='' ) {
 	$user = wp_get_current_user();
@@ -99,16 +101,18 @@ if ( ! function_exists( 'c2c_get_author_custom' ) ) :
 /**
  * Access custom fields for the current author (when on the permalink page for a post, page, or in a loop),
  *
- * @param  string $field       The name/key value of the custom field
- * @param  string $before      (optional) Text to appear before all the custom field value(s) if a value exists. Default is ''.
- * @param  string $after       (optional) Text to appear after all the custom field value if a value(s) exists. Default is ''.
- * @param  string $none        (optional) The text to display in place of the field value should no field value exists; if defined
- *                as '' and no field value exists, then nothing (including no $before and $after) gets displayed.  Default is ''.
- * @param  string $between     (optional) The text to display between multiple occurrences of the custom field; if defined as '',
- *                then only the first instance will be used.  Default is ''.
- * @param  string $before_last (optional) The text to display between the next-to-last and last items listed when multiple occurrences of
- *                the custom field exist; $between MUST be set to something other than '' for this to take effect.  Default is ''.
- * @return string The value for the specified custom field
+ * @param string  $field       The name/key value of the custom field.
+ * @param string  $before      Optional. Text to appear before all the custom field value(s) if a value exists. Default ''.
+ * @param string  $after       Optional. Text to appear after all the custom field value if a value(s) exists. Default ''.
+ * @param string  $none        Optional. The text to display in place of the field value should no field value exists; if
+ *                             defined as '' and no field value exists, then nothing (including no $before and $after) gets
+ *                             displayed.  Default ''.
+ * @param string  $between     Optional. The text to display between multiple occurrences of the custom field; if defined as '',
+ *                             then only the first instance will be used.  Default ''.
+ * @param string  $before_last Optional. The text to display between the next-to-last and last items listed when multiple
+ *                             occurrences of the custom field exist; $between MUST be set to something other than '' for this
+ *                             to take effect.  Default ''.
+ * @return string The value for the specified custom field.
  */
 function c2c_get_author_custom( $field, $before='', $after='', $none='', $between='', $before_last='' ) {
 	global $authordata;
@@ -125,17 +129,19 @@ if ( ! function_exists( 'c2c_get_user_custom' ) ) :
 /**
  * Access custom fields for any user specified by the $user_id value.
  *
- * @param  int    $user_id The user ID
- * @param  string $field The name/key value of the custom field
- * @param  string $before (optional) Text to appear before all the custom field value(s) if a value exists. Default is ''.
- * @param  string $after (optional) Text to appear after all the custom field value if a value(s) exists. Default is ''.
- * @param  string $none (optional) 	The text to display in place of the field value should no field value exists; if defined
- *                as '' and no field value exists, then nothing (including no $before and $after) gets displayed.  Default is ''.
- * @param  string $between (optional) 	The text to display between multiple occurrences of the custom field; if defined as '',
- *                then only the first instance will be used.  Default is ''.
- * @param  string $before_last (optional) The text to display between the next-to-last and last items listed when multiple occurrences of
- *                the custom field exist; $between MUST be set to something other than '' for this to take effect.  Default is ''.
- * @return string The value for the specified custom field
+ * @param int     $user_id     The user ID.
+ * @param string  $field       The name/key value of the custom field.
+ * @param string  $before      Optional. Text to appear before all the custom field value(s) if a value exists. Default ''.
+ * @param string  $after       Optional. Text to appear after all the custom field value if a value(s) exists. Default ''.
+ * @param string  $none        Optional. The text to display in place of the field value should no field value exists; if
+ *                             defined as '' and no field value exists, then nothing (including no $before and $after) gets
+ *                             displayed.  Default ''.
+ * @param string  $between     Optional. The text to display between multiple occurrences of the custom field; if defined as '',
+ *                             then only the first instance will be used.  Default ''.
+ * @param string  $before_last Optional. The text to display between the next-to-last and last items listed when multiple
+ *                             occurrences of the custom field exist; $between MUST be set to something other than '' for this
+ *                             to take effect.  Default ''.
+ * @return string The value for the specified custom field.
  */
 function c2c_get_user_custom( $user_id, $field, $before='', $after='', $none='', $between='', $before_last='' ) {
 	global $wpdb;

@@ -7,7 +7,7 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		$this->unset_current_user();
 	}
 
-	/**
+	/*
 	 *
 	 * HELPER FUNCTIONS
 	 *
@@ -54,7 +54,7 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 
 
 
-	/**
+	/*
 	 *
 	 * TESTS
 	 *
@@ -319,7 +319,19 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		$this->assertEquals( 'Children: adam, bob, cerise, and diane.', c2c_get_user_custom( $user_id, 'child', 'Children: ', '.', 'none', ', ', ', and ' ) );
 	}
 
-	/* [user_custom_field field="" user_id="" this_post="" before="" after="" none="" between="" before_last="" id="" class=""] */
+	/*
+	 * Shortcode.
+	 *
+	 * [user_custom_field field="" user_id="" this_post="" before="" after="" none="" between="" before_last="" id="" class=""]
+	 */
+
+	function test_shortcode_class_exists() {
+		$this->assertTrue( class_exists( 'c2c_GetUserCustomFieldValuesShortcode' ) );
+	}
+
+	function test_shortcode_hooks_init() {
+		$this->assertEquals( 11, has_filter( 'init', 'register_c2c_GetUserCustomFieldValuesShortcode' ) );
+	}
 
 	function test_shortcode_with_field() {
 		$user_id = $this->create_user_with_meta();
@@ -362,6 +374,20 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 			'Kids: adam, bob, cerise, and diane!',
 			do_shortcode( '[user_custom_field field="child" user_id="" before="Kids: " after="!" between=", " before_last=", and "]' )
 		);
+	}
+
+	/* Widget */
+
+	function test_widget_class_exists() {
+		$this->assertTrue( class_exists( 'c2c_GetUserCustomWidget' ) );
+	}
+
+	function test_widget_framework_class_name() {
+		$this->assertTrue( class_exists( 'C2C_Widget_009' ) );
+	}
+
+	function test_widget_hooks_widgets_init() {
+		$this->assertEquals( 10, has_filter( 'widgets_init', 'register_c2c_GetUserCustomWidget' ) );
 	}
 
 }
