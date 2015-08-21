@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Get User Custom Field Values
- * Version:     2.9
+ * Version:     2.9.1
  * Plugin URI:  http://coffee2code.com/wp-plugins/get-user-custom-field-values/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Easily retrieve and control the display of any custom field values/meta data for the currently logged in user or any specified user.
  *
- * Compatible with WordPress 3.6+ through 4.1+.
+ * Compatible with WordPress 3.6+ through 4.3+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -18,7 +18,7 @@
  *
  * @package Get_User_Custom_Field_Values
  * @author  Scott Reilly
- * @version 2.9
+ * @version 2.9.1
  */
 
 /*
@@ -44,6 +44,7 @@
  * - Support name filters to run against found custom fields
  * - c2c_get_user_custom( 'favorite_site', array( 'filters' => array( 'strtoupper', 'make_clickable' ) ) )
  * - Since it's shifting to args array, might as well support 'echo'
+ * - Handle serialized custom field values
  */
 
 /*
@@ -66,8 +67,8 @@
 
 defined( 'ABSPATH' ) or die();
 
-include( dirname( __FILE__ ) . '/get-user-custom.widget.php' );
-include( dirname( __FILE__ ) . '/get-user-custom.shortcode.php' );
+require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'get-user-custom.widget.php' );
+require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'get-user-custom.shortcode.php' );
 
 if ( ! function_exists( 'c2c_get_current_user_custom' ) ):
 /**

@@ -1,8 +1,12 @@
 <?php
-/*
+/**
  * Get User Custom Field Values plugin shortcode code.
  *
  * Copyright (c) 2004-2015 by Scott Reilly (aka coffee2code)
+ *
+ * @package c2c_GetUserCustomFieldValuesShortcode
+ * @author  Scott Reilly
+ * @version 003
  */
 
 defined( 'ABSPATH' ) or die();
@@ -15,6 +19,17 @@ class c2c_GetUserCustomFieldValuesShortcode {
 	public $title          = '';
 	public $widget_handler = '';
 	public $widget_base    = '';
+
+	/**
+	 * Returns version of the class.
+	 *
+	 * @since 003
+	 *
+	 * @return string
+	 */
+	public static function version() {
+		return '003';
+	}
 
 	/**
 	 * Constructor.

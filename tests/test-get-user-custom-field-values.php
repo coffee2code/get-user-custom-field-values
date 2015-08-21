@@ -35,7 +35,9 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		return $user_id;
 	}
 
-	// helper function, unsets current user globally. Taken from post.php test.
+	/**
+	 * Unsets current user globally. Taken from post.php test.
+	 */
 	private function unset_current_user() {
 		global $current_user, $user_ID;
 
@@ -329,6 +331,10 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		$this->assertTrue( class_exists( 'c2c_GetUserCustomFieldValuesShortcode' ) );
 	}
 
+	function test_shortcode_version() {
+		$this->assertEquals( '003', c2c_GetUserCustomFieldValuesShortcode::version() );
+	}
+
 	function test_shortcode_hooks_init() {
 		$this->assertEquals( 11, has_filter( 'init', 'register_c2c_GetUserCustomFieldValuesShortcode' ) );
 	}
@@ -382,8 +388,16 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		$this->assertTrue( class_exists( 'c2c_GetUserCustomWidget' ) );
 	}
 
+	function test_widget_version() {
+		$this->assertEquals( '009', c2c_GetUserCustomWidget::version() );
+	}
+
 	function test_widget_framework_class_name() {
-		$this->assertTrue( class_exists( 'C2C_Widget_009' ) );
+		$this->assertTrue( class_exists( 'C2C_Widget_010' ) );
+	}
+
+	function test_widget_framework_version() {
+		$this->assertEquals( '010', C2C_Widget_010::version() );
 	}
 
 	function test_widget_hooks_widgets_init() {

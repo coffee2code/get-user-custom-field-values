@@ -5,8 +5,8 @@ Tags: user, custom field, user meta, widget, shortcode, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.6
-Tested up to: 4.1
-Stable tag: 2.9
+Tested up to: 4.3
+Stable tag: 2.9.1
 
 Use a widget, shortcode, and/or template tags to easily retrieve and display custom field values for the currently logged in (or any specific) user.
 
@@ -252,6 +252,18 @@ Examples:
 
 == Changelog ==
 
+= 2.9.1 (2015-08-21) =
+* Change: Discontinue use of PHP4-style constructor invocation of WP_Widget to prevent PHP notices in PHP7.
+* Change: Use `require_once()` instead of `include()` for including include files.
+* Change: Use full path to include files.
+* Change: Update widget framework to version 010.
+* Change: Update widget to version 009.
+* Change: Update shortcode to version 003.
+* Change: Note compatibility through WP 4.3+.
+* New: Add unit tests for shortcode and widget class versions.
+* New: Add `c2c_GetUserCustomWidget::version()` to get version of the widget class.
+* New: Add `c2c_GetUserCustomFieldValuesShortcode::version()` to get version of the shortcode class.
+
 = 2.9 (2015-03-04) =
 * Update widget framework to 009
 * Update widget to 008
@@ -365,6 +377,9 @@ Examples:
 
 
 == Upgrade Notice ==
+
+= 2.9.1 =
+Minor bugfix update: Prevented PHP notice under PHP7+ for widget; added more unit tests; updated widget framework to 010; noted compatibility through WP 4.3+
 
 = 2.9 =
 Minor update: added more unit tests; updated widget framework to 009; noted compatibility through WP 4.1+; added plugin icon
