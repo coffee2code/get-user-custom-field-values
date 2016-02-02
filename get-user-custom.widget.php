@@ -2,11 +2,11 @@
 /**
  * Get User Custom Field Values plugin widget code.
  *
- * Copyright (c) 2004-2015 by Scott Reilly (aka coffee2code)
+ * Copyright (c) 2004-2016 by Scott Reilly (aka coffee2code)
  *
  * @package c2c_GetUserCustomWidget
  * @author  Scott Reilly
- * @version 009
+ * @version 010
  */
 
 defined( 'ABSPATH' ) or die();
@@ -15,7 +15,7 @@ if ( ! class_exists( 'c2c_GetUserCustomWidget' ) ) :
 
 require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'c2c-widget.php' );
 
-class c2c_GetUserCustomWidget extends C2C_Widget_010 {
+class c2c_GetUserCustomWidget extends c2c_GetUserCustomFieldValues_Widget_011 {
 
 	/**
 	 * Returns version of the widget.
@@ -25,7 +25,7 @@ class c2c_GetUserCustomWidget extends C2C_Widget_010 {
 	 * @return string
 	 */
 	public static function version() {
-		return '009';
+		return '010';
 	}
 
 	/**
@@ -40,45 +40,78 @@ class c2c_GetUserCustomWidget extends C2C_Widget_010 {
 	 * Initializes the plugin's configuration and localizable text variables.
 	 */
 	public function load_config() {
-		$this->title       = __( 'Get User Custom Field', $this->textdomain );
-		$this->description = __( 'A list of custom field value(s) from user(s).', $this->textdomain );
+		$this->title       = __( 'Get User Custom Field', 'get-user-custom-field-values' );
+		$this->description = __( 'A list of custom field value(s) from user(s).', 'get-user-custom-field-values' );
 
 		$this->config = array(
 			// input can be 'checkbox', 'multiselect', 'select', 'short_text', 'text', 'textarea', 'hidden', or 'none'
 			// datatype can be 'array' or 'hash'
 			// can also specify input_attributes
-			'title' => array( 'input' => 'text', 'default' => __( 'User Custom Field', $this->textdomain ),
-					'label' => __( 'Title', $this->textdomain ) ),
-			'field' => array( 'input' => 'text', 'default' => '',
-					'label' => __( 'Custom field key', $this->textdomain ),
-					'help'  => __( '<strong>*Required.</strong>  The name of the custom field key whose value you wish to have displayed.', $this->textdomain ) ),
-			'this_post' => array( 'input' => 'checkbox', 'default' => false,
-					'label' => __( 'This post\'s author?', $this->textdomain ),
-					'help'  => __( 'For the author of the post containing this shortcode. Takes precedence over \'User ID\'', $this->textdomain ) ),
-			'user_id' => array( 'input' => 'short_text', 'default' => '',
-					'label' => __( 'User ID', $this->textdomain ),
-					'help'  => __( 'ID of user whose custom field\'s value you want to display. Leave blank to search for the custom field for the currently logged in user. Use <code>0</code> to indicate it should only work on the permalink page for a page/post.', $this->textdomain ) ),
-			'before' => array( 'input' => 'text', 'default' => '',
-					'label' => __( 'Before text', $this->textdomain ),
-					'help'  => __( 'Text to display before the custom field.', $this->textdomain ) ),
-			'after' => array( 'input' => 'text', 'default' => '',
-					'label' => __( 'After text', $this->textdomain ),
-					'help'  => __( 'Text to display after the custom field.', $this->textdomain ) ),
-			'none' => array( 'input' => 'text', 'default' => '',
-					'label' => __( 'None text', $this->textdomain ),
-					'help'  => __( 'Text to display if no matching custom field is found (or it has no value). Leave this blank if you don\'t want anything to display when no match is found.', $this->textdomain ) ),
-			'between' => array( 'input' => 'text', 'default' => ', ',
-					'label' => __( 'Between text', $this->textdomain ),
-					'help'  => __( 'Text to display between custom field items if more than one are being shown.', $this->textdomain ) ),
-			'before_last' => array( 'input' => 'text', 'default' => '',
-					'label' => __( 'Before last text', $this->textdomain ),
-					'help'  => __( 'Text to display between the second to last and last custom field items if more than one are being shown.', $this->textdomain ) ),
-			'id' => array( 'input' => 'text', 'default' => '',
-					'label' => __( 'HTML id', $this->textdomain ),
-					'help'  => __( 'The \'id\' attribute for the &lt;span&gt; tag to surrounds output.', $this->textdomain ) ),
-			'class' => array( 'input' => 'text', 'default' => '',
-					'label' => __( 'HTML class', $this->textdomain ),
-					'help'  => __( 'The \'class\' attribute for the &lt;span&gt; tag to surrounds output.', $this->textdomain ) ),
+			'title' => array(
+				'input'   => 'text',
+				'default' => __( 'User Custom Field', 'get-user-custom-field-values' ),
+				'label'   => __( 'Title', 'get-user-custom-field-values' ),
+			),
+			'field' => array(
+				'input'   => 'text',
+				'default' => '',
+				'label'   => __( 'Custom field key', 'get-user-custom-field-values' ),
+				'help'    => __( '<strong>*Required.</strong>  The name of the custom field key whose value you wish to have displayed.', 'get-user-custom-field-values' ),
+			),
+			'this_post' => array(
+				'input'   => 'checkbox',
+				'default' => false,
+				'label'   => __( 'This post\'s author?', 'get-user-custom-field-values' ),
+				'help'    => __( 'For the author of the post containing this shortcode. Takes precedence over \'User ID\'', 'get-user-custom-field-values' ),
+			),
+			'user_id' => array(
+				'input'   => 'short_text',
+				'default' => '',
+				'label'   => __( 'User ID', 'get-user-custom-field-values' ),
+				'help'    => __( 'ID of user whose custom field\'s value you want to display. Leave blank to search for the custom field for the currently logged in user. Use <code>0</code> to indicate it should only work on the permalink page for a page/post.', 'get-user-custom-field-values' ),
+			),
+			'before' => array(
+				'input' => 'text',
+				'default' => '',
+				'label'   => __( 'Before text', 'get-user-custom-field-values' ),
+				'help'    => __( 'Text to display before the custom field.', 'get-user-custom-field-values' ),
+			),
+			'after' => array(
+				'input'   => 'text',
+				'default' => '',
+				'label'   => __( 'After text', 'get-user-custom-field-values' ),
+				'help'    => __( 'Text to display after the custom field.', 'get-user-custom-field-values' ),
+			),
+			'none' => array(
+				'input'   => 'text',
+				'default' => '',
+				'label'   => __( 'None text', 'get-user-custom-field-values' ),
+				'help'    => __( 'Text to display if no matching custom field is found (or it has no value). Leave this blank if you don\'t want anything to display when no match is found.', 'get-user-custom-field-values' ),
+			),
+			'between' => array(
+				'input'   => 'text',
+				'default' => ', ',
+				'label'   => __( 'Between text', 'get-user-custom-field-values' ),
+				'help'    => __( 'Text to display between custom field items if more than one are being shown.', 'get-user-custom-field-values' ),
+			),
+			'before_last' => array(
+				'input'   => 'text',
+				'default' => '',
+				'label'   => __( 'Before last text', 'get-user-custom-field-values' ),
+				'help'    => __( 'Text to display between the second to last and last custom field items if more than one are being shown.', 'get-user-custom-field-values' ),
+			),
+			'id' => array(
+				'input'   => 'text',
+				'default' => '',
+				'label'   => __( 'HTML id', 'get-user-custom-field-values' ),
+				'help'    => __( 'The \'id\' attribute for the &lt;span&gt; tag to surrounds output.', 'get-user-custom-field-values' ),
+			),
+			'class' => array(
+				'input'   => 'text',
+				'default' => '',
+				'label'   => __( 'HTML class', 'get-user-custom-field-values' ),
+				'help'    => __( 'The \'class\' attribute for the &lt;span&gt; tag to surrounds output.', 'get-user-custom-field-values' ),
+			),
 		);
 	}
 
@@ -138,7 +171,7 @@ class c2c_GetUserCustomWidget extends C2C_Widget_010 {
 	public function validate( $instance ) {
 		$instance['field']   = trim( $instance['field'] );
 		$instance['user_id'] = trim( $instance['user_id'] );
-		if ( ! empty( $instance['user_id'] ) ) {
+		if ( $instance['user_id'] ) {
 			$instance['user_id'] = intval( $instance['user_id'] );
 		}
 

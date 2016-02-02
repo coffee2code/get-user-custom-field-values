@@ -5,8 +5,8 @@ Tags: user, custom field, user meta, widget, shortcode, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.6
-Tested up to: 4.3
-Stable tag: 2.9.1
+Tested up to: 4.4
+Stable tag: 3.0
 
 Use a widget, shortcode, and/or template tags to easily retrieve and display custom field values for the currently logged in (or any specific) user.
 
@@ -252,6 +252,25 @@ Examples:
 
 == Changelog ==
 
+= 3.0 (2016-02-01) =
+* Change: Update widget framework to 011:
+    * Change class name to c2c_GetUserCustomFieldValues_Widget_011 to be plugin-specific.
+    * Set textdomain using a string instead of a variable.
+    * Remove `load_textdomain()` and textdomain class variable.
+    * Formatting improvements to inline docs.
+* Change: Add support for language packs:
+    * Set textdomain using a string instead of a variable.
+    * Don't load textdomain from file.
+    * Remove .pot file and /lang subdirectory.
+    * Remove 'Domain Path' from plugin header.
+    * Add 'Text Domain' to plugin header.
+* Change: Reformat widget settings code (spacing).
+* Change: Explicitly declare methods in unit tests as public.
+* Change: Minor improvements to inline docs and test docs.
+* New: Create empty index.php to prevent files from being listed if web server has enabled directory listings.
+* Change: Note compatibility through WP 4.4+.
+* Change: Update copyright date (2016).
+
 = 2.9.1 (2015-08-21) =
 * Change: Discontinue use of PHP4-style constructor invocation of WP_Widget to prevent PHP notices in PHP7.
 * Change: Use `require_once()` instead of `include()` for including include files.
@@ -377,6 +396,9 @@ Examples:
 
 
 == Upgrade Notice ==
+
+= 3.0 =
+Minor update: improved support for localization, minor unit test tweaks, verified compatibility through WP 4.4+, and updated copyright date (2016)
 
 = 2.9.1 =
 Minor bugfix update: Prevented PHP notice under PHP7+ for widget; added more unit tests; updated widget framework to 010; noted compatibility through WP 4.3+

@@ -2,11 +2,11 @@
 /**
  * Get User Custom Field Values plugin shortcode code.
  *
- * Copyright (c) 2004-2015 by Scott Reilly (aka coffee2code)
+ * Copyright (c) 2004-2016 by Scott Reilly (aka coffee2code)
  *
  * @package c2c_GetUserCustomFieldValuesShortcode
  * @author  Scott Reilly
- * @version 003
+ * @version 004
  */
 
 defined( 'ABSPATH' ) or die();
@@ -28,14 +28,14 @@ class c2c_GetUserCustomFieldValuesShortcode {
 	 * @return string
 	 */
 	public static function version() {
-		return '003';
+		return '004';
 	}
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct( $widget_handler ) {
-		$this->title          = __( 'Get User Custom Field Values - Shortcode' );
+		$this->title          = __( 'Get User Custom Field Values - Shortcode', 'get-user-custom-field-values' );
 		$this->widget_handler = $widget_handler;
 		$this->widget_base    = 'widget-' . $this->widget_handler->id_base;
 		$this->shortcode      = apply_filters( 'c2c_get_user_custom_field_values_shortcode', $this->shortcode );
@@ -201,7 +201,7 @@ JS;
 	public function form() {
 		$this->widget_handler->form( array(), array( 'title' ) );
 		echo '<p class="submit">';
-		echo '<input type="button" class="button-primary" onclick="return admin_' . $this->name . '.sendToEditor(this.form);" value="' . __( 'Send shortcode to editor' ) . '" />';
+		echo '<input type="button" class="button-primary" onclick="return admin_' . $this->name . '.sendToEditor(this.form);" value="' . esc_attr__( 'Send shortcode to editor', 'get-user-custom-field-values' ) . '" />';
 		echo '</p>';
 	}
 

@@ -1,16 +1,16 @@
 <?php
 /**
  * Plugin Name: Get User Custom Field Values
- * Version:     2.9.1
+ * Version:     3.0
  * Plugin URI:  http://coffee2code.com/wp-plugins/get-user-custom-field-values/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
- * Domain Path: /lang/
+ * Text Domain: get-user-custom-field-values
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Easily retrieve and control the display of any custom field values/meta data for the currently logged in user or any specified user.
  *
- * Compatible with WordPress 3.6+ through 4.3+.
+ * Compatible with WordPress 3.6+ through 4.4+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -18,7 +18,7 @@
  *
  * @package Get_User_Custom_Field_Values
  * @author  Scott Reilly
- * @version 2.9.1
+ * @version 3.0
  */
 
 /*
@@ -48,7 +48,7 @@
  */
 
 /*
-	Copyright (c) 2006-2015 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2006-2016 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
