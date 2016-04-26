@@ -252,6 +252,9 @@ Examples:
 
 == Changelog ==
 
+= () =
+* Bugfix: Bump version reported by widget to be '011'.
+
 = 3.0 (2016-02-01) =
 * Change: Update widget framework to 011:
     * Change class name to c2c_GetUserCustomFieldValues_Widget_011 to be plugin-specific.

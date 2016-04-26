@@ -6,7 +6,7 @@
  *
  * @package c2c_GetUserCustomWidget
  * @author  Scott Reilly
- * @version 010
+ * @version 011
  */
 
 defined( 'ABSPATH' ) or die();
@@ -25,7 +25,7 @@ class c2c_GetUserCustomWidget extends c2c_GetUserCustomFieldValues_Widget_011 {
 	 * @return string
 	 */
 	public static function version() {
-		return '010';
+		return '011';
 	}
 
 	/**
