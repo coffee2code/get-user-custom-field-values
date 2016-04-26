@@ -254,6 +254,7 @@ Examples:
 
 = () =
 * Bugfix: Bump version reported by widget to be '011'.
+* New: Add LICENSE file.
 
 = 3.0 (2016-02-01) =
 * Change: Update widget framework to 011:
