@@ -5,7 +5,7 @@ Tags: user, custom field, user meta, widget, shortcode, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.6
-Tested up to: 4.4
+Tested up to: 4.5
 Stable tag: 3.0
 
 Use a widget, shortcode, and/or template tags to easily retrieve and display custom field values for the currently logged in (or any specific) user.
@@ -254,6 +254,7 @@ Examples:
 
 = () =
 * Bugfix: Bump version reported by widget to be '011'.
+* Change: Note compatibility through WP 4.5+.
 * New: Add LICENSE file.
 
 = 3.0 (2016-02-01) =
