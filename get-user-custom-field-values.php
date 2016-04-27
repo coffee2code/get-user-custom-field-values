@@ -45,6 +45,8 @@
  * - c2c_get_user_custom( 'favorite_site', array( 'filters' => array( 'strtoupper', 'make_clickable' ) ) )
  * - Since it's shifting to args array, might as well support 'echo'
  * - Handle serialized custom field values
+ * - Allow $field value to actually be an array of different field names to use.
+ *   See: https://wordpress.org/support/topic/multiple-field-output-in-widget
  */
 
 /*
