@@ -253,7 +253,7 @@ Examples:
 == Changelog ==
 
 = () =
-* Change: Update widget:
+* Change: Update widget to 012:
     * Add `register_widget()` and change to calling it when hooking 'admin_init'
     * Load textdomain
 * Change: Update widget framework:
