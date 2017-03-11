@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Easily retrieve and control the display of any custom field values/meta data for the currently logged in user or any specified user.
  *
- * Compatible with WordPress 3.6+ through 4.5+.
+ * Compatible with WordPress 3.6+ through 4.7+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
