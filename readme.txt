@@ -253,6 +253,8 @@ Examples:
 == Changelog ==
 
 = () =
+* Change: Update unit test bootstrap
+    * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
 * Bugfix: Bump version reported by widget to be '011'.
 * Change: Note compatibility through WP 4.5+.
 * New: Add LICENSE file.
