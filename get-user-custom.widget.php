@@ -29,6 +29,15 @@ class c2c_GetUserCustomWidget extends c2c_GetUserCustomFieldValues_Widget_011 {
 	}
 
 	/**
+	 * Registers the widget.
+	 *
+	 * @since 012
+	 */
+	public static function register_widget() {
+		register_widget( __CLASS__ );
+	}
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
@@ -194,9 +203,6 @@ class c2c_GetUserCustomWidget extends c2c_GetUserCustomFieldValues_Widget_011 {
 
 } // end class c2c_GetUserCustomWidget
 
-function register_c2c_GetUserCustomWidget() {
-	register_widget( 'c2c_GetUserCustomWidget' );
-}
-add_action( 'widgets_init', 'register_c2c_GetUserCustomWidget' );
+add_action( 'widgets_init', array( 'c2c_GetUserCustomWidget', 'register_widget' ) );
 
 endif; // end if !class_exists()

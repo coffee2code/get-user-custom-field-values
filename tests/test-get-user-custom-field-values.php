@@ -401,7 +401,7 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 	}
 
 	public function test_widget_hooks_widgets_init() {
-		$this->assertEquals( 10, has_filter( 'widgets_init', 'register_c2c_GetUserCustomWidget' ) );
+		$this->assertEquals( 10, has_filter( 'widgets_init', array( 'c2c_GetUserCustomWidget', 'register_widget' ) ) );
 	}
 
 }

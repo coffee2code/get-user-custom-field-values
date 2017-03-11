@@ -253,10 +253,11 @@ Examples:
 == Changelog ==
 
 = () =
+* Change: Update widget:
+    * Add `register_widget()` and change to calling it when hooking 'admin_init'
 * Change: Update unit test bootstrap
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
-* Bugfix: Bump version reported by widget to be '011'.
 * Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 * New: Add LICENSE file.
