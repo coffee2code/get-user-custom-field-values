@@ -32,6 +32,15 @@ class c2c_GetUserCustomFieldValuesShortcode {
 	}
 
 	/**
+	 * Registers the shortcode.
+	 *
+	 * @since 005
+	 */
+	public static function register() {
+		new self( $GLOBALS['wp_widget_factory']->widgets['c2c_GetUserCustomWidget'] );
+	}
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct( $widget_handler ) {
@@ -207,10 +216,6 @@ JS;
 
 } // end class c2c_GetUserCustomFieldValuesShortcode
 
-function register_c2c_GetUserCustomFieldValuesShortcode() {
-	new c2c_GetUserCustomFieldValuesShortcode( $GLOBALS['wp_widget_factory']->widgets['c2c_GetUserCustomWidget'] );
-}
-
-add_action( 'init', 'register_c2c_GetUserCustomFieldValuesShortcode', 11 );
+add_action( 'init', array( 'c2c_GetUserCustomFieldValuesShortcode', 'register' ), 11 );
 
 endif; // end if !class_exists()
