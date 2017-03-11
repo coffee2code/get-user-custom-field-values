@@ -393,11 +393,11 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 	}
 
 	public function test_widget_framework_class_name() {
-		$this->assertTrue( class_exists( 'c2c_Widget_012' ) );
+		$this->assertTrue( class_exists( 'c2c_Widget_013' ) );
 	}
 
 	public function test_widget_framework_version() {
-		$this->assertEquals( '012', c2c_Widget_012::version() );
+		$this->assertEquals( '013', c2c_Widget_013::version() );
 	}
 
 	public function test_widget_hooks_widgets_init() {

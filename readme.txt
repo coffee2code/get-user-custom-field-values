@@ -256,7 +256,10 @@ Examples:
 * Change: Update widget:
     * Add `register_widget()` and change to calling it when hooking 'admin_init'
     * Load textdomain
-* Change: Update widget framework to 012:
+* Change: Update widget framework:
+    * 013:
+    * Add `get_config()` as a getter for config array
+    * 012:
     * Go back to non-plugin-specific class name of c2c_Widget_012
     * Don't load textdomain
     * Declare class and `load_config()` and `widget_body()` as being abstract
