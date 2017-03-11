@@ -2,7 +2,7 @@
 /**
  * Get User Custom Field Values plugin shortcode code.
  *
- * Copyright (c) 2004-2016 by Scott Reilly (aka coffee2code)
+ * Copyright (c) 2004-2017 by Scott Reilly (aka coffee2code)
  *
  * @package c2c_GetUserCustomFieldValuesShortcode
  * @author  Scott Reilly

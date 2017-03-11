@@ -258,6 +258,7 @@ Examples:
     * Enable more error output for unit tests
 * Bugfix: Bump version reported by widget to be '011'.
 * Change: Note compatibility through WP 4.7+
+* Change: Update copyright date (2017)
 * New: Add LICENSE file.
 
 = 3.0 (2016-02-01) =
