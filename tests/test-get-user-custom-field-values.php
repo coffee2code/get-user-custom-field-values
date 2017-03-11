@@ -382,6 +382,26 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		);
 	}
 
+	public function test_shortcode_with_double_quotes_in_attribute() {
+		$user_id = $this->create_user_with_meta();
+		wp_set_current_user( $user_id );
+
+		$this->assertEquals(
+			'<strong class="url">adam, bob, cerise, diane</strong>',
+			do_shortcode( '[user_custom_field field="child" before=\'<strong class="url">\' after="</strong>" between=", " /]' )
+		);
+	}
+
+	public function test_shortcode_with_single_quotes_in_attribute() {
+		$user_id = $this->create_user_with_meta();
+		wp_set_current_user( $user_id );
+
+		$this->assertEquals(
+			"<strong class='url'>adam, bob, cerise, diane</strong>",
+			do_shortcode( '[user_custom_field field="child" before="<strong class=\'url\'>" after="</strong>" between=", " /]' )
+		);
+	}
+
 	/* Widget */
 
 	public function test_widget_class_exists() {
