@@ -42,7 +42,18 @@ class c2c_GetUserCustomWidget extends c2c_GetUserCustomFieldValues_Widget_011 {
 	 */
 	public function __construct() {
 		parent::__construct( 'get-user-custom', __FILE__, array( 'width' => 300 ) );
+
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_filter( $this->get_hook( 'excluded_form_options' ), array( $this, 'excluded_form_options' ) );
+	}
+
+	/**
+	 * Loads the plugin textdomain.
+	 *
+	 * @since 012
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'get-user-custom-field-values' );
 	}
 
 	/**
