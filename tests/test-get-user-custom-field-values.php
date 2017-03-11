@@ -404,4 +404,8 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_filter( 'widgets_init', array( 'c2c_GetUserCustomWidget', 'register_widget' ) ) );
 	}
 
+	public function test_widget_made_available() {
+		$this->assertContains( 'c2c_GetUserCustomWidget', array_keys( $GLOBALS['wp_widget_factory']->widgets ) );
+	}
+
 }
