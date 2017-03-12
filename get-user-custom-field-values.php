@@ -120,7 +120,7 @@ if ( ! function_exists( 'c2c_get_author_custom' ) ) :
 function c2c_get_author_custom( $field, $before='', $after='', $none='', $between='', $before_last='' ) {
 	global $authordata;
 
-	if ( is_single() || is_page() || in_the_loop() ) {
+	if ( $authordata && ( is_single() || is_page() || in_the_loop() ) ) {
 		return c2c_get_user_custom( ( isset( $authordata->ID ) ? (int) $authordata->ID : 0 ), $field, $before, $after, $none, $between, $before_last );
 	}
 }

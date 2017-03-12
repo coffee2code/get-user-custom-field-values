@@ -279,6 +279,7 @@ Examples:
 * Change: Update unit test bootstrap
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
+* Change: Ensure `$authordata` exists before using its valie (more hardening than a fix)
 * Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 * New: Add LICENSE file.
