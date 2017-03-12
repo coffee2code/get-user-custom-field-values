@@ -155,7 +155,7 @@ class c2c_GetUserCustomWidget extends c2c_Widget_013 {
 
 		if ( ! empty( $user_id ) ) {
 			if ( 'current' == $user_id ) {
-				$ret = c2c_get_author_custom( $field, $before_title . $title . $after_title . $before, $after . $after_widget, $none, $between, $before_last );
+				$ret = c2c_get_author_custom( $field, $before, $after, $none, $between, $before_last );
 			} else {
 				$ret = c2c_get_user_custom( $user_id, $field, $before, $after, $none, $between, $before_last );
 			}
