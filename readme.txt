@@ -255,6 +255,7 @@ Examples:
 = () =
 * Change: Update widget to 012:
     * Correctly pass `$before` and `$after` args in call to `c2c_get_author_custom()`
+    * Fix conditional check to properly wrap custom field in span when 'id' and/or 'class' is specified
     * Add `register_widget()` and change to calling it when hooking 'admin_init'
     * Load textdomain
 * Change: Update widget framework:

@@ -37,6 +37,28 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		return $user_id;
 	}
 
+	private function widget_init( $config = array() ) {
+		$user_id = $this->create_user_with_meta();
+		wp_set_current_user( $user_id );
+
+		c2c_GetUserCustomWidget::register_widget();
+		$widget = new c2c_GetUserCustomWidget( 'abc_abc', '', array() );
+
+		$default_config = array();
+		foreach ( $widget->get_config() as $key => $val ) {
+			$default_config[ $key ] = $val['default'];
+		}
+		$config = array_merge( $default_config, $config );
+
+		if ( true === $config['user_id'] ) {
+			$config['user_id'] = $user_id;
+		}
+
+		$settings = array( 'before_title' => '', 'after_title' => '', );
+
+		return array( $user_id, $widget, $config, $settings );
+	}
+
 	/**
 	 * Unsets current user globally. Taken from post.php test.
 	 */
@@ -425,7 +447,31 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 	}
 
 	public function test_widget_made_available() {
-		$this->assertContains( 'c2c_GetUserCustomWidget', array_keys( $GLOBALS['wp_widget_factory']->widgets ) );
+		$this->assertArrayHasKey( 'c2c_GetUserCustomWidget', $GLOBALS['wp_widget_factory']->widgets );
+	}
+
+	public function test_widget_body_with_class() {
+		list( $user_id, $widget, $config, $settings ) = $this->widget_init( array( 'field' => 'mood', 'class' => 'abcd', 'user_id' => true )  );
+
+		$this->assertEquals( '<span class="abcd">happy</span>', $widget->widget_body( $config, '', $settings ) );
+	}
+
+	public function test_widget_body_with_id() {
+		list( $user_id, $widget, $config, $settings ) = $this->widget_init( array( 'field' => 'mood', 'id' => 'myid', 'user_id' => true ) );
+
+		$this->assertEquals( '<span id="myid">happy</span>', $widget->widget_body( $config, '', $settings ) );
+	}
+
+	public function test_widget_body_with_class_and_id() {
+		list( $user_id, $widget, $config, $settings ) = $this->widget_init( array( 'field' => 'mood', 'class' => 'abcd', 'id' => 'myid', 'user_id' => true ) );
+
+		$this->assertEquals( '<span id="myid" class="abcd">happy</span>', $widget->widget_body( $config, '', $settings ) );
+	}
+
+	public function test_widget_body_with_class_and_id_but_no_meta_value() {
+		list( $user_id, $widget, $config, $settings ) = $this->widget_init( array( 'field' => 'nonexistent', 'class' => 'abcd', 'id' => 'myid', 'user_id' => true ) );
+
+		$this->assertEmpty( $widget->widget_body( $config, '', $settings ) );
 	}
 
 }

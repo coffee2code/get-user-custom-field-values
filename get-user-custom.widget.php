@@ -164,19 +164,19 @@ class c2c_GetUserCustomWidget extends c2c_Widget_013 {
 		}
 
 		// If either 'id' or 'class' attribute was defined, then wrap output in span
-		if ( ! empty( $body ) && ! ( empty( $id ) && empty( $class ) ) ) {
+		if ( $ret && ( $id || $class ) ) {
 			$tag = '<span';
 
-			if ( ! empty( $id ) ) {
+			if ( $id ) {
 				$tag .= ' id="' . esc_attr( $id ) . '"';
 			}
 
-			if ( ! empty( $class ) ) {
+			if ( $class ) {
 				$tag .= ' class="' . esc_attr( $class ) . '"';
 			}
 
-			$tag .= ">$body</span>";
-			$body = $tag;
+			$tag .= ">$ret</span>";
+			$ret = $tag;
 		}
 
 		return $ret;
