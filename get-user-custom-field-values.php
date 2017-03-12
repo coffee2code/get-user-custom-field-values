@@ -149,7 +149,7 @@ if ( ! function_exists( 'c2c_get_user_custom' ) ) :
 function c2c_get_user_custom( $user_id, $field, $before='', $after='', $none='', $between='', $before_last='' ) {
 	global $wpdb;
 
-	if ( empty( $field ) ) {
+	if ( ! $field ) {
 		return;
 	}
 
@@ -158,17 +158,17 @@ function c2c_get_user_custom( $user_id, $field, $before='', $after='', $none='',
 
 	// If no value was found, consider checking the user object itself.
 	$user_fields = array( 'display_name', 'user_email', 'user_login', 'user_nicename', 'user_registered', 'user_url' );
-	if ( empty( $meta_values ) && in_array( $field, $user_fields ) && apply_filters( 'c2c_get_user_custom-user_field_proxy', true, $field ) ) {
+	if ( ! $meta_values && in_array( $field, $user_fields ) && apply_filters( 'c2c_get_user_custom-user_field_proxy', true, $field ) ) {
 		if ( $user = get_userdata( $user_id ) ) {
 			$meta_values = array( $user->$field );
 		}
 	}
 
-	if ( empty( $between ) ) {
+	if ( ! $between ) {
 		$meta_values = array_slice( $meta_values, 0, 1 );
 	}
 
-	if ( ! empty( $meta_values ) ) {
+	if ( $meta_values ) {
 		$sanitized_field = sanitize_key( $field );
 
 		foreach ( $meta_values as $metas ) {
@@ -181,11 +181,11 @@ function c2c_get_user_custom( $user_id, $field, $before='', $after='', $none='',
 		}
 	}
 
-	if ( empty( $values ) ) {
+	if ( ! $values ) {
 		$value = '';
 	} else {
 		$values = array_map( 'trim', $values );
-		if ( empty( $before_last ) ) {
+		if ( ! $before_last ) {
 			$value = implode( $between, $values );
 		} else {
 			switch ( $size = sizeof( $values ) ) {
@@ -201,8 +201,8 @@ function c2c_get_user_custom( $user_id, $field, $before='', $after='', $none='',
 		}
 	}
 
-	if ( empty( $value ) ) {
-		if ( empty( $none ) ) {
+	if ( ! $value ) {
+		if ( ! $none ) {
 			return;
 		}
 		$value = $none;

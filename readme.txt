@@ -282,6 +282,7 @@ Examples:
     * Enable more error output for unit tests
 * Change: Use officially documented order of arguments for `implode()`
 * Change: Ensure `$authordata` exists before using its valie (more hardening than a fix)
+* Change: Rephrase conditions to omit unnecessary use of `empty()`
 * Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 * New: Add LICENSE file.
