@@ -171,9 +171,13 @@ function c2c_get_user_custom( $user_id, $field, $before='', $after='', $none='',
 	if ( ! empty( $meta_values ) ) {
 		$sanitized_field = sanitize_key( $field );
 
-		foreach ( $meta_values as $meta ) {
-			$meta     = apply_filters( "the_user_meta_{$sanitized_field}", $meta );
-			$values[] = apply_filters( 'the_user_meta', $meta );
+		foreach ( $meta_values as $metas ) {
+			$metas = maybe_unserialize( $metas );
+
+			foreach ( (array) $metas as $meta ) {
+				$meta     = apply_filters( "the_user_meta_{$sanitized_field}", $meta );
+				$values[] = apply_filters( 'the_user_meta', $meta );
+			}
 		}
 	}
 

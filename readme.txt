@@ -253,6 +253,7 @@ Examples:
 == Changelog ==
 
 = () =
+* Fix: Properly handle serialized meta values
 * Fix: Properly sanitize field name prior so use as part of a hook name
 * Change: Update widget to 012:
     * Correctly pass `$before` and `$after` args in call to `c2c_get_author_custom()`

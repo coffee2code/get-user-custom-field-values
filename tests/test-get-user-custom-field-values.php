@@ -343,6 +343,13 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		$this->assertEquals( 'Children: adam, bob, cerise, and diane.', c2c_get_user_custom( $user_id, 'child', 'Children: ', '.', 'none', ', ', ', and ' ) );
 	}
 
+	public function test_c2c_get_user_custom_with_between_for_multiple_values_and_serialized_array_value() {
+		$user_id = $this->create_user_with_meta();
+		add_user_meta( $user_id, 'colors', array( 'green', 'blue', 'red' ) );
+
+		$this->assertEquals( 'Colors: green, blue, red.', c2c_get_user_custom( $user_id, 'colors', 'Colors: ', '.', 'none', ', ' ) );
+	}
+
 	/*
 	 * Shortcode.
 	 *
