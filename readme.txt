@@ -8,7 +8,7 @@ Requires at least: 3.6
 Tested up to: 4.7
 Stable tag: 3.0
 
-Use a widget, shortcode, and/or template tags to easily retrieve and display custom field values for the currently logged in (or any specific) user.
+Easily retrieve and display custom field/meta values for any user (logged in user, post author, or specific user) via widget, shortcode, or function.
 
 
 == Description ==
@@ -283,6 +283,7 @@ Examples:
 * Change: Use officially documented order of arguments for `implode()`
 * Change: Ensure `$authordata` exists before using its valie (more hardening than a fix)
 * Change: Rephrase conditions to omit unnecessary use of `empty()`
+* Change: Modify plugin description
 * Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 * New: Add LICENSE file.
