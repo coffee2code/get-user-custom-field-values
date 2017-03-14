@@ -42,16 +42,16 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/get-user-custom-field
 
 == Installation ==
 
-1. Unzip `get-user-custom-field-values.zip` inside the `/wp-content/plugins/` directory (or install via the built-in WordPress plugin installer)
-1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. (Optional) Add filters for 'the_user_meta' to filter user custom field data (see the end of the file for commented out samples you may wish to include).  And/or add per-meta filters by hooking 'the_user_meta_$field'
-1. Give a user a custom field with a value, or have user custom fields already defined.  (This generally entails use of plugin(s) that utilize the user custom fields feature built into WordPress. By default, in a practical sense WordPress only sets the 'first_name', 'last_name', and 'nickname' user custom fields, so you could try using one of them, even if just for testing even though WordPress provides functions to get those particular fields.)
-1. Use the provided 'Get User Custom' widget  -or-
+1. Install via the built-in WordPress plugin installer. Or download and unzip `get-user-custom-field-values.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+2. Activate the plugin through the 'Plugins' admin menu in WordPress
+3. (Optional) Add filters for 'the_user_meta' to filter user custom field data (see the end of the file for commented out samples you may wish to include). And/or add per-meta filters by hooking 'the_user_meta_$field'
+4. Give a user a custom field with a value, or have user custom fields already defined. (This generally entails use of plugin(s) that utilize the user custom fields feature built into WordPress. By default, in a practical sense WordPress only sets the 'first_name', 'last_name', and 'nickname' user custom fields, so you could try using one of them, even if just for testing even though WordPress provides functions to get those particular fields.)
+5. Use the provided 'Get User Custom' widget  -or-
 Use the available shortcode in a post or page  -or-
 Use the function `c2c_get_current_user_custom()` if you wish to access user custom fields for the currently logged
-in user.  Use the function `c2c_get_user_custom()` to access user custom fields for a specified user.  User the function
+in user. Use the function `c2c_get_user_custom()` to access user custom fields for a specified user. Use the function
 `c2c_get_author_custom()` to access custom fields for the current author (when on the permalink page for a post, page, or
-in a loop).  Prepend either of the three mentioned functions with 'echo' to display the contents of the custom field; or
+in a loop). Prepend either of the three mentioned functions with 'echo' to display the contents of the custom field; or
 use the return value as an argument to another function.
 
 
@@ -59,11 +59,11 @@ use the return value as an argument to another function.
 
 = How do I assign users custom fields so that I can retrieve them using this plugin? =
 
-The user profile page within WordPress provides inputs for a handful of user custom fields (first_name, last_name, aim, yim, jabber, description, etc).  However, you're probably more interested in creating your own user custom fields.  In that case, you'll have to use another plugin to store custom fields for users, or directly use WordPress functions manually.
+The user profile page within WordPress provides inputs for a handful of user custom fields (first_name, last_name, aim, yim, jabber, description, etc). However, you're probably more interested in creating your own user custom fields. In that case, you'll have to use another plugin to store custom fields for users, or directly use WordPress functions manually.
 
 = I don't plan on using the shortcode builder when writing or editing a post or page, so how do I get rid of it? =
 
-When on the Write or Edit admin pages for a page or post, find the "Screen Options" link near the upper right-hand corner.  Clicking it slides down a panel of options.  In the "Show on screen" section, uncheck the checkbox labeled "Get User Custom Field Values - Shortcode".  This must be done separately for posts and for pages if you want the shortcode builder disabled for both sections.
+When on the Write or Edit admin pages for a page or post, find the "Screen Options" link near the upper right-hand corner. Clicking it slides down a panel of options. In the "Show on screen" section, uncheck the checkbox labeled "Get User Custom Field Values - Shortcode". This must be done separately for posts and for pages if you want the shortcode builder disabled for both sections.
 
 = Does this plugin include unit tests? =
 
@@ -77,7 +77,7 @@ The plugin provides three optional template tags for use in your theme templates
 = Functions =
 
 * `<?php function c2c_get_current_user_custom( $field, $before='', $after='', $none='', $between='', $before_last='' ) ?>`
-This allows access to custom fields for the currently logged in user.  If the current visitor is NOT logged in, then the `$none` value is returned.
+This allows access to custom fields for the currently logged in user. If the current visitor is NOT logged in, then the `$none` value is returned.
 
 * `<?php function c2c_get_author_custom( $field, $before='', $after='', $none='', $between='', $before_last='' ) ?>`
 This allows access to custom fields for the current author (when on the permalink page for a post, page, or in a loop).
@@ -119,13 +119,13 @@ optional) The text to display between the next-to-last and last items listed whe
 * `<?php c2c_get_current_user_custom('favorite_colors', 'Favorite colors: <ul><li>', '</li></ul>', '', '</li><li>'); ?>`
 "Favorite colors: <ul><li>blue</li><li>gray</li><li>green</li><li>black</li><li>red</li></ul>"
 
-* `<?php echo c2c_get_user_custom(3, 'first_name', 'Hi, ', '.  Welcome back.'); // where 3 is the id of the user we want ?>`
-"Hi, Scott.  Welcome back."
+* `<?php echo c2c_get_user_custom(3, 'first_name', 'Hi, ', '. Welcome back.'); // where 3 is the id of the user we want ?>`
+"Hi, Scott. Welcome back."
 
 
 == Filters ==
 
-The plugin exposes five filters for hooking.  Typically, customizations utilizing these hooks would be put into your active theme's functions.php file, or used by another plugin.
+The plugin exposes five filters for hooking. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
 
 = c2c_get_current_user_custom (filter) =
 
@@ -183,7 +183,7 @@ Do:
 
 = c2c_get_user_custom_field_values_shortcode (filter) =
 
-The 'c2c_get_user_custom_field_values_shortcode' hook allows you to define an alternative to the default shortcode tag.  By default the shortcode tag name used is 'user_custom_field'.  It is recommended you only utilize this filter before making use of the plugin's shortcode in posts and pages.  If you change the shortcode tag name, then any existing shortcodes using an older name will no longer work (unless you employ further coding efforts).
+The 'c2c_get_user_custom_field_values_shortcode' hook allows you to define an alternative to the default shortcode tag. By default the shortcode tag name used is 'user_custom_field'. It is recommended you only utilize this filter before making use of the plugin's shortcode in posts and pages. If you change the shortcode tag name, then any existing shortcodes using an older name will no longer work (unless you employ further coding efforts).
 
 Arguments:
 
@@ -217,11 +217,11 @@ add_filter( 'c2c_get_user_custom-user_field_proxy', '__return_false' );
 
 == Shortcode ==
 
-This plugin provides one shortcode that can be used within the body of a post or page.  The shortcode is accompanied by a shortcode builder (see Screenshots) that presents a form for easily creating a shortcode.  However, here's the documentation for the shortcode and its supported attributes.
+This plugin provides one shortcode that can be used within the body of a post or page. The shortcode is accompanied by a shortcode builder (see Screenshots) that presents a form for easily creating a shortcode. However, here's the documentation for the shortcode and its supported attributes.
 
 = user_custom_field =
 
-The only shortcode provided by this plugin is named `user_custom_field`.  It is a self-closing tag, meaning that it is not meant to encapsulate text.  Except for 'field', all attributes are optional, though you'll likely need to provide a couple to achieve your desired result.
+The only shortcode provided by this plugin is named `user_custom_field`. It is a self-closing tag, meaning that it is not meant to encapsulate text. Except for 'field', all attributes are optional, though you'll likely need to provide a couple to achieve your desired result.
 
 The name of the shortcode can be changed via the filter 'c2c_get_user_custom_field_values_shortcode' (though making this customization is only recommended for before your first use of the shortcode, since changing to a new name will cause the shortcodes previously defined using the older name to no longer work).
 
@@ -284,6 +284,7 @@ Examples:
 * Change: Ensure `$authordata` exists before using its valie (more hardening than a fix)
 * Change: Rephrase conditions to omit unnecessary use of `empty()`
 * Change: Modify plugin description
+* Change: Tweak readme.txt (minor content changes, spacing)
 * Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 * New: Add LICENSE file.
