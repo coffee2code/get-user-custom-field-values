@@ -396,6 +396,13 @@ class Get_User_Custom_Field_Values_Test extends WP_UnitTestCase {
 		$this->assertEquals( '<span class="the-class">happy</span>', do_shortcode( '[user_custom_field field="mood" class="the-class"]' ) );
 	}
 
+	public function test_shortcode_with_field_and_no_id() {
+		$user_id1 = $this->create_user_with_meta( array( 'mood' => 'pleased' ) );
+		$user_id2 = $this->create_user_with_meta();
+		wp_set_current_user( $user_id1 );
+
+		$this->assertEquals( 'pleased', do_shortcode( '[user_custom_field field="mood" between=" and "]' ) );
+	}
 
 	public function test_shortcode_with_this_post() {
 		$user_id = $this->create_user_with_meta();
