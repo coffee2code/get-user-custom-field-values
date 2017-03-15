@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.6
 Tested up to: 4.7
-Stable tag: 3.0
+Stable tag: 3.1
 
 Easily retrieve and display custom field/meta values for any user (logged in user, post author, or specific user) via widget, shortcode, or function.
 
@@ -252,7 +252,7 @@ Examples:
 
 == Changelog ==
 
-= () =
+= 3.1 (2017-03-14) =
 * Fix: Properly handle serialized meta values
 * Fix: Properly sanitize field name prior so use as part of a hook name
 * Change: Update widget to 012:
@@ -433,6 +433,9 @@ Examples:
 
 
 == Upgrade Notice ==
+
+= 3.1 =
+Recommended bugfix update: Properly handled serialized meta values, fixed output of wrapping markup in widget if 'id' or 'class' is specified, verified compatibility through WP 4.7+, widget and unit test updates, various fixes and improvements
 
 = 3.0 =
 Minor update: improved support for localization, minor unit test tweaks, verified compatibility through WP 4.4+, and updated copyright date (2016)

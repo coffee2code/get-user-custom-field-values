@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Get User Custom Field Values
- * Version:     3.0
+ * Version:     3.1
  * Plugin URI:  http://coffee2code.com/wp-plugins/get-user-custom-field-values/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -18,33 +18,31 @@
  *
  * @package Get_User_Custom_Field_Values
  * @author  Scott Reilly
- * @version 3.0
+ * @version 3.1
  */
 
 /*
- * TODO
+ * TODO:
  * - Create hooks to allow disabling shortcode, shortcode builder, and widget support
- * - Create method to handle args passing (or adapt existing functions to prefer it and deprecate older arguments)
  * - Support getting random custom field values
  * - Support specifying a limit on the number of custom field values returned
  * - Facilitate conditional output, maybe via c2c_get_user_custom_if() where text is only output if post
- * - has the custom field AND it equals a specified value (or one of an array of possible values)
- * - echo c2c_get_user_custom_if( 'size', array( 'XL', 'XXL' ), 'Sorry, this size is out of stock.' );
+ *   has the custom field AND it equals a specified value (or one of an array of possible values)
+ *   echo c2c_get_user_custom_if( 'size', array( 'XL', 'XXL' ), 'Sorry, this size is out of stock.' );
  * - Introduce a 'format' shortcode attribute and template tag argument.  Defines the output format for each
- * - matching custom field, i.e. c2c_get_user_custom(..., $format = 'Size %key% has %value%' in stock.')
+ *   matching custom field, i.e. c2c_get_user_custom(..., $format = 'Size %key% has %value%' in stock.')
  * - Support specifying $field as array or comma-separated list of custom fields.
  * - Create args array alternative template tag: c2c_user_custom_field( $field, $args = array() ) so features
- * - can be added and multiple arguments don't have to be explicitly provided.  Perhaps transition c2c_get_user_custom()
- * - in plugin v3.0 and detect args.
- * - function c2c_get_user_custom( $field, $args = array() ) {
+ *   can be added and multiple arguments don't have to be explicitly provided.  Perhaps transition c2c_get_user_custom()
+ *   in plugin's v3.0 and detect args.
+ *   function c2c_get_user_custom( $field, $args = array() ) {
  *     if ( ! empty( $args ) && ! is_array( $args ) ) // Old style usage
  *       return c2c_old_get_user_custom( $field, ... ); // Or: $args = c2c_get_user_custom_args_into_array( ... );
  *     // Do new handling here.
  *   }
  * - Support name filters to run against found custom fields
- * - c2c_get_user_custom( 'favorite_site', array( 'filters' => array( 'strtoupper', 'make_clickable' ) ) )
+ *   c2c_get_user_custom( 'favorite_site', array( 'filters' => array( 'strtoupper', 'make_clickable' ) ) )
  * - Since it's shifting to args array, might as well support 'echo'
- * - Handle serialized custom field values
  * - Allow $field value to actually be an array of different field names to use.
  *   See: https://wordpress.org/support/topic/multiple-field-output-in-widget
  */
