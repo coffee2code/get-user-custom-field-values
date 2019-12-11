@@ -126,7 +126,7 @@ optional) The text to display between the next-to-last and last items listed whe
 
 The plugin exposes five filters for hooking. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
 
-= c2c_get_current_user_custom (filter) =
+**c2c_get_current_user_custom (filter)**
 
 The 'c2c_get_current_user_custom' hook allows you to use an alternative approach to safely invoke `c2c_get_current_user_custom()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 
@@ -144,7 +144,7 @@ Do:
 
 `<?php $twitter = apply_filters( 'c2c_get_current_user_custom', 'twitter' ); ?>`
 
-= c2c_get_author_custom (filter) =
+**c2c_get_author_custom (filter)**
 
 The 'c2c_get_author_custom' hook allows you to use an alternative approach to safely invoke `c2c_get_author_custom()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 
@@ -162,7 +162,7 @@ Do:
 
 `<?php $aim = apply_filters( 'c2c_get_author_custom', 'aim', 'AIM: ' ); ?>`
 
-= c2c_get_user_custom (filter) =
+**c2c_get_user_custom (filter)**
 
 The 'c2c_get_user_custom' hook allows you to use an alternative approach to safely invoke `c2c_get_user_custom()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 
@@ -180,7 +180,7 @@ Do:
 
 `<?php $address = apply_filters( 'c2c_get_user_custom', 5, 'address ); ?>`
 
-= c2c_get_user_custom_field_values_shortcode (filter) =
+**c2c_get_user_custom_field_values_shortcode (filter)**
 
 The 'c2c_get_user_custom_field_values_shortcode' hook allows you to define an alternative to the default shortcode tag. By default the shortcode tag name used is 'user_custom_field'. It is recommended you only utilize this filter before making use of the plugin's shortcode in posts and pages. If you change the shortcode tag name, then any existing shortcodes using an older name will no longer work (unless you employ further coding efforts).
 
@@ -198,7 +198,7 @@ function change_c2c_get_user_custom_field_values_shortcode( $shortcode ) {
 }
 `
 
-= c2c_get_user_custom-user_field_proxy (filter) =
+**c2c_get_user_custom-user_field_proxy (filter)**
 
 The 'c2c_get_user_custom-user_field_proxy' hook allows you to prevent proxying to user object fields if no custom value for the custom field was found for the user. By default, if a user does not have a value for the given custom field, the plugin will compare the field name to the small list of user object fields (i.e. user table fields) to see if it is a valid user field. If so, then the user field value (as opposed to custom field value) is returned.
 
