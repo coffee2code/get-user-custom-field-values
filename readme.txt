@@ -35,8 +35,8 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/get-user-custom-field
 
 == Screenshots ==
 
-1. A screenshot of the 'Get User Custom' widget.
-2. A screenshot of the 'Get User Custom' shortcode builder.
+1. Screenshot of the 'Get User Custom' widget.
+2. Screenshot of the 'Get User Custom' shortcode builder (not available in the block editor, aka Gutenberg).
 
 
 == Installation ==
@@ -62,7 +62,27 @@ The user profile page within WordPress provides inputs for a handful of user cus
 
 = I don't plan on using the shortcode builder when writing or editing a post or page, so how do I get rid of it? =
 
-When on the Write or Edit admin pages for a page or post, find the "Screen Options" link near the upper right-hand corner. Clicking it slides down a panel of options. In the "Show on screen" section, uncheck the checkbox labeled "Get User Custom Field Values - Shortcode". This must be done separately for posts and for pages if you want the shortcode builder disabled for both sections.
+If you use the block editor (aka Gutenberg, which is the default editing experience as of WordPress 5.0), then the shortcode builder is not available yet so this situation would be moot for you.
+
+For the classic editor, when on the Write or Edit admin pages for a page or post, find the "Screen Options" link near the upper right-hand corner. Clicking it slides down a panel of options. In the "Show on screen" section, uncheck the checkbox labeled "Get User Custom Field Values - Shortcode". This must be done separately for posts and for pages if you want the shortcode builder disabled for both sections.
+
+= I don't see the shortcode builder; where is it? =
+
+If you use the block editor (aka Gutenberg, which is the default editing experience as of WordPress 5.0), then the shortcode builder is not available yet.
+
+For the classic editor, the shortcode builder/wizard is available in the admin when writing or editing a page or post. On the edit/create page, it'll be a sidebar widget (in this context, also known as a metabox) labeled "Get User Custom Field Values - Shortcode". If you don't see it there (which may be the case since it is hidden by default), find the "Screen Options" link near the upper righthand corner of the page. Clicking it slides down a panel of options. In the "Show on screen" section, check the checkbox labeled "Get User Custom Field Values - Shortcode". This must be done separately for posts and for pages if you want the shortcode builder enabled for both sections.
+
+= Can I move the shortcode builder box because it is way down at the bottom of the right sidebar when I create/edit posts? =
+
+Yes, any of the boxes on the page when creating/editing posts can be rearranged by dragging and dropping the box name. At the very top of the shortcode builder box the cursor will turn into a four-way array indicating you can click to drag that box. You can move it under the post content box, or higher up on the right side.
+
+= Why didn't the shortcode get inserted into the editor after I clicked the "Send shortcode to editor" button? =
+
+Sometimes you have to ensure the text editor has focus. Click within the text editor and make sure the cursor is positioned at the location you want the shortcode to be inserted. Then click the button and the shortcode should get inserted there.
+
+= Is this plugin compatible with the new block editor (aka Gutenberg)? =
+
+Yes, except that the shortcode builder (a custom tool to facilitate making use of the plugin's shortcode when creating a post) has not been ported over yet. The template tags, widget, and shortcode itself all function properly.
 
 = Does this plugin include unit tests? =
 

@@ -14,6 +14,7 @@
 * Change: Note compatibility through WP 5.3+
 * Change: Drop compatibility with version of WP older than 4.6
 * Change: Rewrite plugin description
+* Change: Update docs to reflect that shortcode builder is not compatible with block editor yet
 * Change: Use different markdown formatting for shortcode name to avoid capitalization when displayed in Plugin Directory
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Add GitHub link to readme
