@@ -1,6 +1,8 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Update widget to 013:
+    * Directly load textdomain instead of hooking it to already-fired action
 * New: Add README.md
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * Unit tests:
