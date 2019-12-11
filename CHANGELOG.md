@@ -4,6 +4,7 @@
 * New: Add README.md
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * Unit tests:
+    * Change: Update unit test install script and bootstrap to use latest WP unit test repo
     * Change: Tweak whitespace in bootstrap
 * Change: Note compatibility through WP 5.3+
 * Change: Drop compatibility with version of WP older than 4.6
