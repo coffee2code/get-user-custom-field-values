@@ -9,6 +9,7 @@
 * Change: Note compatibility through WP 5.3+
 * Change: Drop compatibility with version of WP older than 4.6
 * Change: Rewrite plugin description
+* Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Add GitHub link to readme
 * Change: Update copyright date (2020)
 * Change: Update License URI to be HTTPS

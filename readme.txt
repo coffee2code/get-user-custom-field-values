@@ -122,7 +122,7 @@ optional) The text to display between the next-to-last and last items listed whe
 "Hi, Scott. Welcome back."
 
 
-== Filters ==
+== Hooks ==
 
 The plugin exposes five filters for hooking. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
 
