@@ -7,6 +7,7 @@
 * Change: Rewrite plugin description
 * Change: Add GitHub link to readme
 * Change: Update copyright date (2020)
+* Change: Update License URI to be HTTPS
 
 
 ## 3.1 _(2017-03-14)_
