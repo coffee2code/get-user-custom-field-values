@@ -8,8 +8,7 @@ Requires at least: 4.6
 Tested up to: 5.3
 Stable tag: 3.1
 
-Easily retrieve and display custom field/meta values for any user (logged in user, post author, or specific user) via widget, shortcode, or function.
-
+Use widgets, shortcodes, and/or template tags to easily retrieve and display custom field values for users.
 
 == Description ==
 

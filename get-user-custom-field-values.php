@@ -8,7 +8,7 @@
  * Text Domain: get-user-custom-field-values
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Description: Easily retrieve and display custom field/meta values for any user (logged in user, post author, or specific user) via widget, shortcode, or function.
+ * Description: Use widgets, shortcodes, and/or template tags to easily retrieve and display custom field values for users.
  *
  * Compatible with WordPress 4.6+ through 5.3+.
  *
