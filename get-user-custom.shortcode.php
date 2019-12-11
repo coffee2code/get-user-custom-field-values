@@ -66,6 +66,21 @@ class c2c_GetUserCustomFieldValuesShortcode {
 	}
 
 	/**
+	 * Determines if the metabox should be shown.
+	 *
+	 * The metabox should only be shown in the classic editor.
+	 *
+	 * @since 006
+	 *
+	 * @return bool True if the metabox can be shown, false otherwise.
+	 */
+	public function show_metabox() {
+		$current_screen = get_current_screen();
+
+		return ! method_exists( $current_screen, 'is_block_editor' ) || ! $current_screen->is_block_editor();
+	}
+
+	/**
 	 * Register meta box.
 	 *
 	 * By default, the shortcode builder is present for all post types. Filter
@@ -78,6 +93,10 @@ class c2c_GetUserCustomFieldValuesShortcode {
 	 * @param WP_Post $post      The post
 	 */
 	public function do_meta_box( $post_type, $type, $post ) {
+		if ( ! $this->show_metabox() ) {
+			return;
+		}
+
 		$post_types = apply_filters( 'c2c_get_user_custom_field_values_post_types', get_post_types() );
 		if ( ! in_array( $post_type, $post_types ) ) {
 			return;
@@ -158,6 +177,10 @@ class c2c_GetUserCustomFieldValuesShortcode {
 	 * Outputs the JS for the shortcode wizard.
 	 */
 	public function admin_js() {
+		if ( ! $this->show_metabox() ) {
+			return;
+		}
+
 		echo <<<JS
 		<script type="text/javascript">
 			var {$this->name} = function () {}

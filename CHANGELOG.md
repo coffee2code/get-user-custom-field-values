@@ -5,6 +5,9 @@
     * Directly load textdomain instead of hooking it to already-fired action
 * New: Add README.md
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
+* Shortcode:
+    * Change: Don't show shortcode builder metabox within context of block editor
+    * New: Add `show_metabox()`
 * Unit tests:
     * Change: Update unit test install script and bootstrap to use latest WP unit test repo
     * Change: Tweak whitespace in bootstrap
