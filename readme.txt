@@ -30,7 +30,7 @@ The list of useful user custom field values that are provided by default in Word
 
 It is up to other plugins or custom code to add additional user custom fields that you may then be able to retrieve with this plugin.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/get-user-custom-field-values/) | [Plugin Directory Page](https://wordpress.org/plugins/get-user-custom-field-values/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/get-user-custom-field-values/) | [Plugin Directory Page](https://wordpress.org/plugins/get-user-custom-field-values/) | [GitHub](https://github.com/coffee2code/get-custom-field-values/) | [Author Homepage](http://coffee2code.com)
 
 
 == Screenshots ==
