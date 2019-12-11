@@ -48,7 +48,7 @@
  */
 
 /*
-	Copyright (c) 2006-2017 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2006-2020 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
