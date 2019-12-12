@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 3.2 _(2019-12-11)_
 * Change: Update widget to 013:
     * Directly load textdomain instead of hooking it to already-fired action
 * New: Add README.md
@@ -21,7 +21,6 @@
 * Change: Add GitHub link to readme
 * Change: Update copyright date (2020)
 * Change: Update License URI to be HTTPS
-
 
 ## 3.1 _(2017-03-14)_
 * Fix: Properly handle serialized meta values

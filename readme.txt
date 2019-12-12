@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.6
 Tested up to: 5.3
-Stable tag: 3.1
+Stable tag: 3.2
 
 Use widgets, shortcodes, and/or template tags to easily retrieve and display custom field values for users.
 
@@ -271,6 +271,28 @@ Examples:
 
 == Changelog ==
 
+= 3.2 (2019-12-11) =
+* Change: Update widget to 013:
+    * Directly load textdomain instead of hooking it to already-fired action
+* New: Add README.md
+* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
+* Shortcode:
+    * Change: Don't show shortcode builder metabox within context of block editor
+    * New: Add `show_metabox()`
+    * Change: Update version to 006
+* Unit tests:
+    * Change: Update unit test install script and bootstrap to use latest WP unit test repo
+    * Change: Tweak whitespace in bootstrap
+* Change: Note compatibility through WP 5.3+
+* Change: Drop compatibility with version of WP older than 4.6
+* Change: Rewrite plugin description
+* Change: Update docs to reflect that shortcode builder is not compatible with block editor yet
+* Change: Use different markdown formatting for shortcode name to avoid capitalization when displayed in Plugin Directory
+* Change: Rename readme.txt section from 'Filters' to 'Hooks'
+* Change: Add GitHub link to readme
+* Change: Update copyright date (2020)
+* Change: Update License URI to be HTTPS
+
 = 3.1 (2017-03-14) =
 * Fix: Properly handle serialized meta values
 * Fix: Properly sanitize field name prior so use as part of a hook name
@@ -331,6 +353,9 @@ _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/ge
 
 
 == Upgrade Notice ==
+
+= 3.2 =
+Minor update: disabled shortcode builder under block editor (it's incompatible), modernized unit tests, noted compatibility through WP 5.3+, dropped compatibility with versions of WP older than 4.6, updated copyright date (2020), and other minor tweaks and documentation improvements
 
 = 3.1 =
 Recommended bugfix update: Properly handled serialized meta values, fixed output of wrapping markup in widget if 'id' or 'class' is specified, verified compatibility through WP 4.7+, widget and unit test updates, various fixes and improvements
