@@ -14,7 +14,7 @@ Use widgets, shortcodes, and/or template tags to easily retrieve and display cus
 
 This plugin provides a powerful widget, shortcode (with shortcode builder tool), and template tags for easily retrieving and displaying custom field values for the currently logged in user or any specified user.
 
-This plugin provides functionality similar to the [Get Custom Field Values](http://coffee2code.com/wp-plugins/get-custom-field-values/) plugin, but for user custom fields (which WordPress manages in a separate database table).
+This plugin provides functionality similar to the [Get Custom Field Values](https://wordpress.org/plugins/get-custom-field-values/) plugin, but for user custom fields (which WordPress manages in a separate database table).
 
 This plugin does NOT help you in setting user custom field values, nor does it provide an interface to list or otherwise manage user custom fields.
 
