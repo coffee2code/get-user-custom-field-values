@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.4+
+
 ## 3.2 _(2019-12-11)_
 * Change: Update widget to 013:
     * Directly load textdomain instead of hooking it to already-fired action
