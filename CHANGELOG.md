@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
 * Change: Update link to Get Custom Field Values plugin to point to wordpress.org instead of my site
