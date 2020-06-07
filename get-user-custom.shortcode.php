@@ -6,7 +6,7 @@
  *
  * @package c2c_GetUserCustomFieldValuesShortcode
  * @author  Scott Reilly
- * @version 006
+ * @version 007
  */
 
 defined( 'ABSPATH' ) or die();
@@ -37,7 +37,7 @@ class c2c_GetUserCustomFieldValuesShortcode {
 	 * @return string
 	 */
 	public static function version() {
-		return '006';
+		return '007';
 	}
 
 	/**
