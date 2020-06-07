@@ -1,6 +1,8 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Update shortcode builder widget:
+    * New: Store object instantiated during `register()`
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it (and added to it)
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
