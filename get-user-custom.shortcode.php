@@ -241,9 +241,11 @@ JS;
 	 */
 	public function form() {
 		$this->widget_handler->form( array(), array( 'title' ) );
-		echo '<p class="submit">';
-		echo '<input type="button" class="button-primary" onclick="return admin_' . $this->name . '.sendToEditor(this.form);" value="' . esc_attr__( 'Send shortcode to editor', 'get-user-custom-field-values' ) . '" />';
-		echo '</p>';
+		printf(
+			'<p class="submit"><input type="button" class="button-primary" onclick="return admin_%s.sendToEditor(this.form);" value="%s" /></p>' . "\n",
+			esc_attr( $this->name ),
+			esc_attr( __( 'Send shortcode to editor', 'get-user-custom-field-values' ) )
+		);
 	}
 
 } // end class c2c_GetUserCustomFieldValuesShortcode

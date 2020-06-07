@@ -4,6 +4,7 @@
 * Change: Update shortcode builder widget:
     * New: Store object instantiated during `register()`
     * Change: Cast return value of `c2c_get_user_custom_field_values_post_types` filter as an array
+    * Change: Sanitize string used in markup attributes (hardening)
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it (and added to it)
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
