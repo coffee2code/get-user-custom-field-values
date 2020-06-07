@@ -10,6 +10,12 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 * Facilitate conditional output, maybe via `c2c_get_user_custom_if()` where text is only output if post
   has the custom field AND it equals a specified value (or one of an array of possible values)
   `echo c2c_get_user_custom_if( 'size', array( 'XL', 'XXL' ), 'Sorry, this size is out of stock.' );`
+* Following from previous item, the second argument of a potential `c2c_get_user_custom_if()` could support a variety of possibilities:
+  - An array to indicate value must match one of the items in the array
+  - A string or number to indicate value must be equal to specified string/number
+  - Comparison operators with numeric `/^[><]=?\s*[0-9\.]+$/` to indicate value must be numeric and abide by comparison
+  - "exists"/"notexists" to indicate if custom field exists or not
+  - Some sort of numeric range notation ">5,<10" or [ '>5', '<10'] or [ 5, 10 ] or "range(5,10)" or `/^[0-9\.]+\s*-\s*[0-9\.]+$/` (e.g. "5-10")
 * Introduce a 'format' shortcode attribute and template tag argument.  Defines the output format for each matching custom field,
   i.e. `c2c_get_user_custom(..., $format = 'Size %key% has %value%' in stock.')`
 * Support specifying $field as array or comma-separated list of custom fields
@@ -27,5 +33,8 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 * Since it's shifting to args array, might as well support 'echo'
 * Allow $field value to actually be an array of different field names to use.
   See: https://wordpress.org/support/topic/multiple-field-output-in-widget
+* Add block
+* Document shortcode
+* Add unit tests for widget class, widget base class, shortcode class
 
 Feel free to make your own suggestions or champion for something already on the list (via the [plugin's support forum on WordPress.org](https://wordpress.org/support/plugin/get-user-custom-field-values/) or on [GitHub](https://github.com/coffee2code/get-user-custom-field-values/) as an issue or PR).
