@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 3.2.1 _(2020-06-07)_
 * Change: Update shortcode builder widget to 007:
     * New: Store object instantiated during `register()`
     * Change: Cast return value of `c2c_get_user_custom_field_values_post_types` filter as an array

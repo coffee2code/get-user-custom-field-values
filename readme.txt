@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.6
 Tested up to: 5.4
-Stable tag: 3.2
+Stable tag: 3.2.1
 
 Use widgets, shortcodes, and/or template tags to easily retrieve and display custom field values for users.
 
@@ -271,6 +271,17 @@ Examples:
 
 == Changelog ==
 
+= 3.2.1 (2020-06-07) =
+* Change: Update shortcode builder widget to 007:
+    * New: Store object instantiated during `register()`
+    * Change: Cast return value of `c2c_get_user_custom_field_values_post_types` filter as an array
+    * Change: Sanitize string used in markup attributes (hardening)
+* New: Add TODO.md and move existing TODO list from top of main plugin file into it (and added to it)
+* Change: Note compatibility through WP 5.4+
+* Change: Update links to coffee2code.com to be HTTPS
+* Change: Update link to Get Custom Field Values plugin to point to wordpress.org instead of my site
+* Change: Unit tests: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
+
 = 3.2 (2019-12-11) =
 * Change: Update widget to 013:
     * Directly load textdomain instead of hooking it to already-fired action
@@ -330,29 +341,13 @@ Examples:
 * Change: Update copyright date (2017)
 * New: Add LICENSE file.
 
-= 3.0 (2016-02-01) =
-* Change: Update widget framework to 011:
-    * Change class name to c2c_GetUserCustomFieldValues_Widget_011 to be plugin-specific.
-    * Set textdomain using a string instead of a variable.
-    * Remove `load_textdomain()` and textdomain class variable.
-    * Formatting improvements to inline docs.
-* Change: Add support for language packs:
-    * Set textdomain using a string instead of a variable.
-    * Don't load textdomain from file.
-    * Remove .pot file and /lang subdirectory.
-    * Remove 'Domain Path' from plugin header.
-    * Add 'Text Domain' to plugin header.
-* Change: Reformat widget settings code (spacing).
-* Change: Explicitly declare methods in unit tests as public.
-* Change: Minor improvements to inline docs and test docs.
-* New: Create empty index.php to prevent files from being listed if web server has enabled directory listings.
-* Change: Note compatibility through WP 4.4+.
-* Change: Update copyright date (2016).
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/get-user-custom-field-values/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 3.2.1 =
+Trivial update: Added TODO.md file, tweaked shortcode builder code, updated a few URLs to be HTTPS, and noted compatibility through WP 5.4+.
 
 = 3.2 =
 Minor update: disabled shortcode builder under block editor (it's incompatible), modernized unit tests, noted compatibility through WP 5.3+, dropped compatibility with versions of WP older than 4.6, updated copyright date (2020), and other minor tweaks and documentation improvements
