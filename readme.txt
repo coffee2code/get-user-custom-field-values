@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.6
 Tested up to: 5.5
-Stable tag: 3.2.1
+Stable tag: 3.2.2
 
 Use widgets, shortcodes, and/or template tags to easily retrieve and display custom field values for users.
 
@@ -271,6 +271,15 @@ Examples:
 
 == Changelog ==
 
+= 3.2.2 (2020-09-18) =
+* Change: Restructure unit test file structure
+    * New: Create new subdirectory `phpunit/` to house all files related to unit testing
+    * Change: Move `bin/` to `phpunit/bin/`
+    * Change: Move `tests/bootstrap.php` to `phpunit/`
+    * Change: Move `tests/` to `phpunit/tests/`
+    * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+* Change: Note compatibility through WP 5.5+
+
 = 3.2.1 (2020-06-07) =
 * Change: Update shortcode builder widget to 007:
     * New: Store object instantiated during `register()`
@@ -304,47 +313,13 @@ Examples:
 * Change: Update copyright date (2020)
 * Change: Update License URI to be HTTPS
 
-= 3.1 (2017-03-14) =
-* Fix: Properly handle serialized meta values
-* Fix: Properly sanitize field name prior so use as part of a hook name
-* Change: Update widget to 012:
-    * Correctly pass `$before` and `$after` args in call to `c2c_get_author_custom()`
-    * Fix conditional check to properly wrap custom field in span when 'id' and/or 'class' is specified
-    * Add `register_widget()` and change to calling it when hooking 'admin_init'
-    * Load textdomain
-    * Add more substantial unit tests
-* Change: Update widget framework:
-    * 013:
-    * Add `get_config()` as a getter for config array
-    * 012:
-    * Go back to non-plugin-specific class name of c2c_Widget_012
-    * Don't load textdomain
-    * Declare class and `load_config()` and `widget_body()` as being abstract
-    * Change class variable `$config` from public to protected
-    * Discontinue use of `extract()`
-    * Apply 'widget_title' filter to widget title
-    * Add more inline documentation
-    * Minor code reformatting (spacing, bracing, Yoda-ify conditions)
-* Change: Update shortcode builder widget to 005:
-    * Use `get_config()` to get widget config now that the object variable is protected
-    * Add `register()` and change to calling it when hooking 'init'
-    * Add more unit tests
-* Change: Update unit test bootstrap
-    * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
-    * Enable more error output for unit tests
-* Change: Use officially documented order of arguments for `implode()`
-* Change: Ensure `$authordata` exists before using its valie (more hardening than a fix)
-* Change: Rephrase conditions to omit unnecessary use of `empty()`
-* Change: Modify plugin description
-* Change: Tweak readme.txt (minor content changes, spacing)
-* Change: Note compatibility through WP 4.7+
-* Change: Update copyright date (2017)
-* New: Add LICENSE file.
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/get-user-custom-field-values/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 3.2.2 =
+Trivial update: Restructured unit test file structure and noted compatibility through WP 5.5+.
 
 = 3.2.1 =
 Trivial update: Added TODO.md file, tweaked shortcode builder code, updated a few URLs to be HTTPS, and noted compatibility through WP 5.4+.
