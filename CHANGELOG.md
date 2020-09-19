@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.5+
+
 ## 3.2.1 _(2020-06-07)_
 * Change: Update shortcode builder widget to 007:
     * New: Store object instantiated during `register()`
