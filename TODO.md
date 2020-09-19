@@ -35,6 +35,6 @@ The following list comprises ideas, suggestions, and known issues, all of which 
   See: https://wordpress.org/support/topic/multiple-field-output-in-widget
 * Add block
 * Document shortcode
-* Add unit tests for widget class, widget base class, shortcode class
+* Add unit tests for methods within widget class, widget base class, shortcode class
 
 Feel free to make your own suggestions or champion for something already on the list (via the [plugin's support forum on WordPress.org](https://wordpress.org/support/plugin/get-user-custom-field-values/) or on [GitHub](https://github.com/coffee2code/get-user-custom-field-values/) as an issue or PR).
