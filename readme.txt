@@ -41,7 +41,7 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/get-user-custom-fiel
 
 == Installation ==
 
-1. Install via the built-in WordPress plugin installer. Or download and unzip `get-user-custom-field-values.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+1. Install via the built-in WordPress plugin installer. Or install the plugin code inside the plugins directory for your site (typically `/wp-content/plugins/`).
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. (Optional) Add filters for 'the_user_meta' to filter user custom field data (see the end of the file for commented out samples you may wish to include). And/or add per-meta filters by hooking 'the_user_meta_$field'
 4. Give a user a custom field with a value, or have user custom fields already defined. (This generally entails use of plugin(s) that utilize the user custom fields feature built into WordPress. By default, in a practical sense WordPress only sets the 'first_name', 'last_name', and 'nickname' user custom fields, so you could try using one of them, even if just for testing even though WordPress provides functions to get those particular fields.)
