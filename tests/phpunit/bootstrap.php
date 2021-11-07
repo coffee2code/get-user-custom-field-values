@@ -5,6 +5,8 @@
  * @package Get_User_Custom_Field_Values
  */
 
+define( 'GET_USER_CUSTOM_FIELD_VALUES_PLUGIN_FILE', dirname( __FILE__, 3 ) . '/get-user-custom-field-values.php' );
+
 ini_set( 'display_errors', 'on' );
 error_reporting( E_ALL );
 
@@ -20,7 +22,7 @@ require_once $_tests_dir . '/tests/phpunit/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( __FILE__, 3 ) . '/get-user-custom-field-values.php';
+	require GET_USER_CUSTOM_FIELD_VALUES_PLUGIN_FILE;
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
