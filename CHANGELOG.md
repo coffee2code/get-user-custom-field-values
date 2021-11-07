@@ -8,6 +8,7 @@
         * Change: Move `phpunit/bin/` to `tests/bin/`
         * Change: Move `phpunit/bootstrap.php` into `tests/phpunit/`
         * Change: Move tests from `phpunit/tests/` to `tests/phpunit/tests/`
+        * Change: Remove 'test-' prefix from unit test files
 
 ## 3.2.2 _(2020-09-18)_
 * Change: Restructure unit test file structure

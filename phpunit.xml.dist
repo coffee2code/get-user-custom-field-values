@@ -8,7 +8,7 @@
 	>
 	<testsuites>
 		<testsuite name="get-user-custom-field-values">
-			<directory prefix="test-" suffix=".php">./tests/phpunit/tests/</directory>
+			<directory suffix=".php">./tests/phpunit/tests/</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
