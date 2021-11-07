@@ -3,6 +3,11 @@
 ## _(in-progress)_
 * Change: Note compatibility through WP 5.8+
 * Change: Update copyright date (2021)
+* Unit tests:
+    * Change: Restructure unit test file structure
+        * Change: Move `phpunit/bin/` to `tests/bin/`
+        * Change: Move `phpunit/bootstrap.php` into `tests/phpunit/`
+        * Change: Move tests from `phpunit/tests/` to `tests/phpunit/tests/`
 
 ## 3.2.2 _(2020-09-18)_
 * Change: Restructure unit test file structure
