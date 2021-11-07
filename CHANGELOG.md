@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add DEVELOPER-DOCS.md and move template tag and shortcode documentation into it
 * Change: Note compatibility through WP 5.8+
 * Change: Update copyright date (2021)
 * Change: Tweak installation instruction
