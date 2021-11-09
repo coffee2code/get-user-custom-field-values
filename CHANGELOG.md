@@ -12,6 +12,7 @@
 * Unit tests:
     * Change: Split shortcode-related tests out into their own file
     * Change: Split widget-related tests out into their own file
+    * New: Add unit tests for `show_metabox()`
     * New: Add helper function `create_post()`
     * Change: Restructure unit test file structure
         * Change: Move `phpunit/bin/` to `tests/bin/`

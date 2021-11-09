@@ -277,4 +277,24 @@ class Get_User_Custom_Field_Values_Shortcode_Test extends WP_UnitTestCase {
 		$this->assertTrue( true === c2c_GetUserCustomFieldValuesShortcode::$instance->can_author_use_shortcodes() );
 	}
 
+	/*
+	 * show_metabox()
+	 */
+
+	public function test_show_metabox_when_not_in_block_editor() {
+		set_current_screen( 'post.php' );
+		$current_screen = get_current_screen();
+		$current_screen->is_block_editor = false;
+
+		$this->assertTrue( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
+	public function test_show_metabox_when_in_block_editor() {
+		set_current_screen( 'post.php' );
+		$current_screen = get_current_screen();
+		$current_screen->is_block_editor = true;
+
+		$this->assertFalse( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
 }
