@@ -1,6 +1,10 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Prevent users who cannot post unfiltered HTML from using the shortcode in posts. Props Francesco Carlucci and Erwan.
+    * Hardens security to prevent potentail information disclosure or XSS by authors with limited privileges
+    * New: Add shortcode class function `can_author_use_shortcodes()`
+    * New: Add filter `'get_user_custom_field_values/can_author_use_shortcodes'`
 * New: Add DEVELOPER-DOCS.md and move template tag and shortcode documentation into it
 * Change: Note compatibility through WP 5.8+
 * Change: Update copyright date (2021)
@@ -8,6 +12,7 @@
 * Unit tests:
     * Change: Split shortcode-related tests out into their own file
     * Change: Split widget-related tests out into their own file
+    * New: Add helper function `create_post()`
     * Change: Restructure unit test file structure
         * Change: Move `phpunit/bin/` to `tests/bin/`
         * Change: Move `phpunit/bootstrap.php` into `tests/phpunit/`
