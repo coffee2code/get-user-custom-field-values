@@ -297,4 +297,92 @@ class Get_User_Custom_Field_Values_Shortcode_Test extends WP_UnitTestCase {
 		$this->assertFalse( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
 	}
 
+	public function test_show_metabox_when_author_cannot_publish_posts() {
+		$this->test_show_metabox_when_not_in_block_editor();
+
+		$contributor_id = $this->create_user_with_meta( false, array( 'role' => 'contributor' ) );
+		$post1_id       = $this->create_post( array( 'post_author' => $contributor_id ), true );
+
+		$this->assertFalse( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
+	public function test_show_metabox_when_author_can_publish_posts() {
+		$this->test_show_metabox_when_not_in_block_editor();
+
+		$editor_id = $this->create_user_with_meta( false, array( 'role' => 'editor' ) );
+		$post_id   = $this->create_post( array( 'post_author' => $editor_id ), true );
+
+		$this->assertTrue( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
+	/*
+	 * filter: get_user_custom_field_values/show_metabox
+	 */
+
+	public function test_filter_show_metabox() {
+		set_current_screen( 'post.php' );
+		$current_screen = get_current_screen();
+		$current_screen->is_block_editor = false;
+		add_filter( 'get_user_custom_field_values/show_metabox', function( $show ) {
+			return true;
+		} );
+
+		$contributor_id = $this->create_user_with_meta( array(), array( 'role' => 'contributor' ) );
+		$post1_id       = $this->create_post( array( 'post_author' => $contributor_id ), true );
+
+		$this->assertTrue( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
+	public function test_filter_show_metabox_does_not_fire_if_block_editor_enabled() {
+		set_current_screen( 'post.php' );
+		$current_screen = get_current_screen();
+		$current_screen->is_block_editor = true;
+		add_filter( 'get_user_custom_field_values/show_metabox', function( $show ) {
+			return true;
+		} );
+
+		$contributor_id = $this->create_user_with_meta( array(), array( 'role' => 'contributor' ) );
+		$post1_id       = $this->create_post( array( 'post_author' => $contributor_id ), true );
+
+		$this->assertFalse( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
+	public function test_filter_show_metabox_takes_into_account_user() {
+		set_current_screen( 'post.php' );
+		$current_screen = get_current_screen();
+		$current_screen->is_block_editor = false;
+		add_filter( 'get_user_custom_field_values/show_metabox', function( $show ) {
+			global $post;
+			$user = get_userdata( $post->post_author );
+			if ( $user && 'testadmin' === $user->user_nicename ) {
+				$show = false;
+			}
+			return $show;
+		} );
+
+		$admin1_id = $this->create_user_with_meta( array(), array( 'role' => 'administrator', 'user_nicename' => 'testadmin' ) );
+		$post1_id  = $this->create_post( array( 'post_author' => $admin1_id ), true );
+
+		$this->assertFalse( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+
+		$admin2_id = $this->create_user_with_meta( array(), array( 'role' => 'administrator', 'user_nicename' => 'anotheradmin' ) );
+		$post2_id  = $this->create_post( array( 'post_author' => $admin2_id ), true );
+
+		$this->assertTrue( c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
+	public function test_filter_show_metabox_gets_cast_to_bool() {
+		set_current_screen( 'post.php' );
+		$current_screen = get_current_screen();
+		$current_screen->is_block_editor = false;
+		add_filter( 'get_user_custom_field_values/show_metabox', function( $show ) {
+			return 5;
+		} );
+
+		$contributor_id = $this->create_user_with_meta( array(), array( 'role' => 'contributor' ) );
+		$post1_id       = $this->create_post( array( 'post_author' => $contributor_id ), true );
+
+		$this->assertTrue( true === c2c_GetUserCustomFieldValuesShortcode::$instance->show_metabox() );
+	}
+
 }

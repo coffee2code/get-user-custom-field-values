@@ -5,6 +5,7 @@
     * Hardens security to prevent potentail information disclosure or XSS by authors with limited privileges
     * New: Add shortcode class function `can_author_use_shortcodes()`
     * New: Add filter `'get_user_custom_field_values/can_author_use_shortcodes'`
+    * Change: Prevent display of shortcode builder metabox to users who cannot publish posts
 * New: Add DEVELOPER-DOCS.md and move template tag and shortcode documentation into it
 * Change: Note compatibility through WP 5.8+
 * Change: Update copyright date (2021)
