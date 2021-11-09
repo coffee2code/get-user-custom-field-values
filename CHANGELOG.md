@@ -11,6 +11,7 @@
 * New: Add DEVELOPER-DOCS.md and move template tag and shortcode documentation into it
 * Change: Note compatibility through WP 5.8+
 * Change: Update copyright date (2021)
+* Change: Update shortcode builder widget to 008
 * Change: Tweak installation instructions
 * Unit tests:
     * Change: Split shortcode-related tests out into their own file
