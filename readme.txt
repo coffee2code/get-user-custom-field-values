@@ -109,6 +109,7 @@ These are the hooks provided by the plugin:
 * `c2c_get_user_custom_field_values_shortcode` : Filter to customize the name of the plugin's shortcode.
 * `c2c_get_user_custom-user_field_proxy`       : Filter to prevent proxying to user object fields if no value for the custom field was found for the user.
 * `get_user_custom_field_values/can_author_use_shortcodes` : Filter to customize if post author can make use of the 'user_custom_field' shortcode.
+* `get_user_custom_field_values/show_metabox`  : Filter to customize if the shortcode builder metabox is shown.
 
 The shortcode provided is `[user_custom_field]`, which has a number of attributes to customize its behavior and output.
 
