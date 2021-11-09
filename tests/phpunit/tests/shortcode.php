@@ -131,7 +131,7 @@ class Get_User_Custom_Field_Values_Shortcode_Test extends WP_UnitTestCase {
 	}
 
 	public function test_shortcode_with_this_post() {
-		$user_id = $this->create_user_with_meta();
+		$user_id = $this->create_user_with_meta( array(), array( 'role' => 'editor' ) );
 		$post_id = $this->factory->post->create( array( 'post_author' => $user_id ) );
 
 		query_posts( '' );
@@ -177,6 +177,63 @@ class Get_User_Custom_Field_Values_Shortcode_Test extends WP_UnitTestCase {
 			"<strong class='url'>adam, bob, cerise, diane</strong>",
 			do_shortcode( '[user_custom_field field="child" before="<strong class=\'url\'>" after="</strong>" between=", " /]' )
 		);
+	}
+
+	public function test_shortcode_with_contributor_as_author_does_not_work_in_post_context() {
+		$privileged_user_id  = $this->create_user_with_meta( array( 'secret' => 'xyz' ), array( 'role' => 'administrator' ) );
+		$contributor_id      = $this->create_user_with_meta( false, array( 'role' => 'contributor' ) );
+		$contributor_post_id = $this->create_post( array(
+			'post_author' => $contributor_id,
+			'post_content' => '[user_custom_field field="secret" user_id="' . $privileged_user_id . '"]',
+		), true );
+
+		$this->assertEmpty( trim( apply_filters( 'the_content', get_the_content() ) ) );
+	}
+
+	public function test_shortcode_with_author_as_author_does_not_work_in_post_context() {
+		$privileged_user_id  = $this->create_user_with_meta( array( 'secret' => 'xyz' ), array( 'role' => 'administrator' ) );
+		$author_id           = $this->create_user_with_meta( false, array( 'role' => 'author' ) );
+		$author_post_id      = $this->create_post( array(
+			'post_author' => $author_id,
+			'post_content' => '[user_custom_field field="secret" user_id="' . $privileged_user_id . '"]',
+		), true );
+
+		$this->assertEmpty( trim( apply_filters( 'the_content', get_the_content() ) ) );
+	}
+
+	public function test_shortcode_with_contributor_as_author_does_not_work_in_post_context_for_administrator() {
+		$privileged_user_id  = $this->create_user_with_meta( array( 'secret' => 'xyz' ), array( 'role' => 'administrator' ) );
+		$contributor_id      = $this->create_user_with_meta( false, array( 'role' => 'contributor' ) );
+		$contributor_post_id = $this->create_post( array(
+			'post_author'  => $contributor_id,
+			'post_content' => '[user_custom_field field="secret" user_id="' . $privileged_user_id . '"]',
+		), true );
+		$administrator_id    = $this->create_user_with_meta( false, array( 'role' => 'administrator' ) );
+		wp_set_current_user( $administrator_id );
+
+		$this->assertEmpty( trim( apply_filters( 'the_content', get_the_content() ) ) );
+	}
+
+	public function test_shortcode_outside_post_context_of_post_with_contributor_as_author_works() {
+		$privileged_user_id  = $this->create_user_with_meta( array( 'secret' => 'xyz' ), array( 'role' => 'administrator' ) );
+		$contributor_id      = $this->create_user_with_meta( array( 'secret' => 'xyz' ), array( 'role' => 'contributor' ) );
+		$contributor_post_id = $this->create_post( array(
+			'post_author' => $contributor_id,
+			'post_content' => '[user_custom_field field="secret" user_id="' . $privileged_user_id . '"]',
+		), true );
+
+		$this->assertEquals( '', do_shortcode( '[user_custom_field field="secret" user_id="' . $privileged_user_id . '"]' ) );
+	}
+
+	public function test_shortcode_with_editor_as_author_works() {
+		$privileged_user_id  = $this->create_user_with_meta( array( 'secret' => 'xyz' ), array( 'role' => 'administrator' ) );
+		$editor_id          = $this->create_user_with_meta( false, array( 'role' => 'editor' ) );
+		$editor_post_id     = $this->create_post( array(
+			'post_author' => $editor_id,
+			'post_content' => '[user_custom_field field="secret" user_id="' . $privileged_user_id . '"]',
+		), true );
+
+		$this->assertEquals( 'xyz', trim( apply_filters( 'the_content', get_the_content() ) ) );
 	}
 
 	/*
