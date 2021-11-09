@@ -20,7 +20,7 @@ The following list comprises ideas, suggestions, and known issues, all of which 
   i.e. `c2c_get_user_custom(..., $format = 'Size %key% has %value%' in stock.')`
 * Support specifying $field as array or comma-separated list of custom fields
 * Create args array alternative template tag: `c2c_user_custom_field( $field, $args = array() )` so features can be added and multiple arguments don't have to be explicitly provided.
-  Perhaps transition `c2c_get_user_custom()` in plugin's v3.0 and detect args.
+  Perhaps transition `c2c_get_user_custom()` in plugin's v4.0 and detect args.
   ```
   function c2c_get_user_custom( $field, $args = array() ) {
      if ( ! empty( $args ) && ! is_array( $args ) ) // Old style usage
@@ -33,8 +33,16 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 * Since it's shifting to args array, might as well support 'echo'
 * Allow $field value to actually be an array of different field names to use.
   See: https://wordpress.org/support/topic/multiple-field-output-in-widget
-* Add block
-* Document shortcode
 * Add unit tests for methods within widget class, widget base class, shortcode class
+* Gutenberg: Adapt shortcode widget to block editor. Wizard should permit adding custom fields inline or as blocks.
+* Discontinue use of jQuery in favor of vanilla JS
+* Add CLI support for more post meta commands. (Or as new plugin, Post Meta CLI?)
+* Disable use of shortcode in comments, even if shortcodes in comments are enabled (which they aren't, but if a site went out of its way to allow shortcodes in comments, they may not anticipate the potential for information disclosure by allowing use of this particular shortcode)
+    * Require separate filter to enable
+* Add function invocation action hooks
+* Shortcode: Add filter `'get_user_custom_field_values/allow_shortcode_usage'` in `shortcode()`, that passes result of `can_author_use_shortcodes()` as first arg, but also all info about shortcode usage. Allows for fine-grained determination if a specific shortcode use is allowed/disallowed.
+* Abandon separate versioning of shortcode and widget classes
+    * Update `@since` values for each class to corresponding plugin versions
+
 
 Feel free to make your own suggestions or champion for something already on the list (via the [plugin's support forum on WordPress.org](https://wordpress.org/support/plugin/get-user-custom-field-values/) or on [GitHub](https://github.com/coffee2code/get-user-custom-field-values/) as an issue or PR).

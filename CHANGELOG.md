@@ -25,6 +25,7 @@
         * Change: In bootstrap, store path to plugin file constant so its value can be used within that file and in test file
         * Change: In bootstrap, check for test installation in more places and exit with error message if not found
         * Change: Remove 'test-' prefix from unit test files
+* New: Add a few more possible TODO items
 
 ## 3.2.2 _(2020-09-18)_
 * Change: Restructure unit test file structure
