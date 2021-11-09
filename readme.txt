@@ -108,6 +108,7 @@ These are the hooks provided by the plugin:
 * `c2c_get_user_custom`                        : An alternative approach to safely invoke `c2c_get_user_custom()` in such a way that if the plugin were deactivated or deleted, then your calls to the function won't cause errors in your site.
 * `c2c_get_user_custom_field_values_shortcode` : Filter to customize the name of the plugin's shortcode.
 * `c2c_get_user_custom-user_field_proxy`       : Filter to prevent proxying to user object fields if no value for the custom field was found for the user.
+* `get_user_custom_field_values/can_author_use_shortcodes` : Filter to customize if post author can make use of the 'user_custom_field' shortcode.
 
 The shortcode provided is `[user_custom_field]`, which has a number of attributes to customize its behavior and output.
 

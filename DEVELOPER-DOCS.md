@@ -62,6 +62,8 @@ This plugin provides one shortcode that can be used within the body of a post or
 
 The name of the shortcode can be changed via the filter `c2c_get_user_custom_field_values_shortcode` (though making this customization is only recommended for before your first use of the shortcode, since changing to a new name will cause the shortcodes previously defined using the older name to no longer work).
 
+Note: this plugin's shortcode is only available for use by authors with the ability to post scripts (aka the 'unfiltered_html' capability), such as those with the editor or administrator role (except on Multisite) or the super administrator role. For authors without that capability (such as contributors and authors), the shortcode builder is not available and any instances of the shortcode in the post are ignored. See documentation for the `get_user_custom_field_values/can_author_use_shortcodes` to customize this behavior.
+
 ### `user_custom_field`
 
 The only shortcode provided by this plugin is named `user_custom_field`. It is a self-closing tag, meaning that it is not meant to encapsulate text. Except for 'field', all attributes are optional, though you'll likely need to provide a couple to achieve your desired result.
@@ -182,4 +184,26 @@ The `c2c_get_user_custom-user_field_proxy` hook allows you to prevent proxying t
 ```php
 // Prevent user field proxying: i.e. this would not return anything: [user_custom_field field="user_email" user_id="1" /]
 add_filter( 'c2c_get_user_custom-user_field_proxy', '__return_false' );
+```
+
+### `get_user_custom_field_values/can_author_use_shortcodes` _(filter)_
+
+The `get_user_custom_field_values/can_author_use_shortcodes` filter allows you to override whether a post author is able to use the shortcode provided by the plugin. By default, the plugin's shortcode is only available for use by authors with the ability to post scripts (aka the 'unfiltered_html' capability), such as those with the editor or administrator role (except on Multisite) or the super administrator role. The limitation exists to prevent potential disclosure of potentially private information stored in user meta.
+
+#### Arguments
+
+* `$can` _(boolean)_ :
+Whether or not the post author can use the 'user_custom_field' shortcode, as determined by `can_author_use_shortcodes()`.
+
+* `$user` _(WP\_User|false)_ :
+The user.
+
+* `$post` _(WP\_Post|false)_ :
+The post
+
+#### Example
+
+```php
+// Allow authors, regardless of capabilities, to use the 'user_custom_field' shortcode.
+add_filter( 'get_user_custom_field_values/can_author_use_shortcodes', '__return_true' );
 ```
