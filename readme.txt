@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.6
 Tested up to: 5.8
-Stable tag: 3.2.2
+Stable tag: 3.3
 
 Use widgets, shortcodes, and/or template tags to easily retrieve and display custom field values for users.
 
@@ -116,6 +116,39 @@ The shortcode provided is `[user_custom_field]`, which has a number of attribute
 
 == Changelog ==
 
+= 3.3 (2021-11-09) =
+Highlights:
+
+This recommended release prevents users who can't post unfiltered HTML from using the shortcode in posts (security hardening), adds some new filters, adds DEVELOPER-DOCS.md, notes compatibility through WP 5.8+, and reorganizes and improves unit tests.
+
+Details:
+
+* Change: Prevent users who cannot post unfiltered HTML from using the shortcode in posts. Props Francesco Carlucci and Erwan.
+    * Hardens security to prevent potentail information disclosure or XSS by authors with limited privileges
+    * New: Add shortcode class function `can_author_use_shortcodes()`
+    * New: Add filter `'get_user_custom_field_values/can_author_use_shortcodes'`
+    * Change: Prevent shortcodes created by users who cannot publish unfiltered HTML from being evaulated
+    * Change: Prevent display of shortcode builder metabox to users who cannot publish posts
+* New: Add filter `'get_user_custom_field_values/show_metabox'` to customize if shortcode builder metabox is shown
+* New: Add DEVELOPER-DOCS.md and move template tag and shortcode documentation into it
+* Change: Note compatibility through WP 5.8+
+* Change: Update copyright date (2021)
+* Change: Update shortcode builder widget to 008
+* Change: Tweak installation instructions
+* Unit tests:
+    * Change: Split shortcode-related tests out into their own file
+    * Change: Split widget-related tests out into their own file
+    * New: Add unit tests for `show_metabox()`
+    * New: Add helper function `create_post()`
+    * Change: Restructure unit test file structure
+        * Change: Move `phpunit/bin/` to `tests/bin/`
+        * Change: Move `phpunit/bootstrap.php` into `tests/phpunit/`
+        * Change: Move tests from `phpunit/tests/` to `tests/phpunit/tests/`
+        * Change: In bootstrap, store path to plugin file constant so its value can be used within that file and in test file
+        * Change: In bootstrap, check for test installation in more places and exit with error message if not found
+        * Change: Remove 'test-' prefix from unit test files
+* New: Add a few more possible TODO items
+
 = 3.2.2 (2020-09-18) =
 * Change: Restructure unit test file structure
     * New: Create new subdirectory `phpunit/` to house all files related to unit testing
@@ -136,32 +169,13 @@ The shortcode provided is `[user_custom_field]`, which has a number of attribute
 * Change: Update link to Get Custom Field Values plugin to point to wordpress.org instead of my site
 * Change: Unit tests: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
 
-= 3.2 (2019-12-11) =
-* Change: Update widget to 013:
-    * Directly load textdomain instead of hooking it to already-fired action
-* New: Add README.md
-* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
-* Shortcode:
-    * Change: Don't show shortcode builder metabox within context of block editor
-    * New: Add `show_metabox()`
-    * Change: Update version to 006
-* Unit tests:
-    * Change: Update unit test install script and bootstrap to use latest WP unit test repo
-    * Change: Tweak whitespace in bootstrap
-* Change: Note compatibility through WP 5.3+
-* Change: Drop compatibility with version of WP older than 4.6
-* Change: Rewrite plugin description
-* Change: Update docs to reflect that shortcode builder is not compatible with block editor yet
-* Change: Use different markdown formatting for shortcode name to avoid capitalization when displayed in Plugin Directory
-* Change: Rename readme.txt section from 'Filters' to 'Hooks'
-* Change: Add GitHub link to readme
-* Change: Update copyright date (2020)
-* Change: Update License URI to be HTTPS
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/get-user-custom-field-values/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 3.3 =
+Recommended update: Prevented users who can't post unfiltered HTML from using the shortcode in posts (security hardening), added some new filters, added DEVELOPER-DOCS.md, noted compatibility through WP 5.8+, and reorganized and improved unit tests.
 
 = 3.2.2 =
 Trivial update: Restructured unit test file structure and noted compatibility through WP 5.5+.

@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 3.3 _(2021-11-09)_
+
+### Highlights:
+
+This recommended release prevents users who can't post unfiltered HTML from using the shortcode in posts (security hardening), adds some new filters, adds DEVELOPER-DOCS.md, notes compatibility through WP 5.8+, and reorganizes and improves unit tests.
+
+### Details:
+
 * Change: Prevent users who cannot post unfiltered HTML from using the shortcode in posts. Props Francesco Carlucci and Erwan.
     * Hardens security to prevent potentail information disclosure or XSS by authors with limited privileges
     * New: Add shortcode class function `can_author_use_shortcodes()`
